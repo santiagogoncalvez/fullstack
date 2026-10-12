@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router"
 import { Building2, Heart, MapPin, Signal } from "lucide-react"
-import { Skeleton } from "../components/Skeleton"
+import { JobDetailSkeleton } from "../components/JobDetailSkeleton"
 import { Link } from "../components/Link"
 import snarkdown from 'snarkdown'
 import styles from './Detail.module.css'
@@ -116,14 +116,7 @@ export default function JobDetail () {
   if (loading) {
     return (
       <div className={styles.container} role="status" aria-label="Cargando empleo">
-        <Skeleton style={{ width: "12rem", height: "0.875rem" }} />
-        <div>
-          <Skeleton style={{ width: "60%", height: "2rem" }} />
-          <Skeleton style={{ width: "40%", height: "1rem", marginTop: "var(--space-2)" }} />
-        </div>
-        <Skeleton style={{ width: "100%", height: "0.875rem" }} />
-        <Skeleton style={{ width: "100%", height: "0.875rem" }} />
-        <Skeleton style={{ width: "70%", height: "0.875rem" }} />
+        <JobDetailSkeleton />
       </div>
     )
   }

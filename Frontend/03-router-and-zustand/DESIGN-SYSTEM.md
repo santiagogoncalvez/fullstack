@@ -51,7 +51,7 @@ Layout: `--page 70rem` + `--gutter 1.25rem` compartidos por header, footer, home
 - Paginación circular, activa en acento sólido.
 - Theme: `useTheme` + `ThemeToggle`, default del sistema, persiste `laburodev-theme`, script anti-flash en `index.html`.
 - Favoritos: zustand + `persist` (`laburodev-favorites`). Sin puerta de login hasta auth real. Aplicar eliminado hasta backend real.
-- Carga: `Skeleton` unificado (pulso, sin gradientes), `JobCardSkeleton` en search (4, como la página), skeletons de bloque en detalle, `Spinner` (lucide) en cambios de ruta. Todo con `role="status"` y sin animación si `prefers-reduced-motion`.
+- Carga: `Skeleton` base (pulso igual al `animate-pulse` de tailwind: opacidad 1↔0.5, 2s) + skeletons de layout por página: `SearchResultsSkeleton` (N `JobCardSkeleton`, replicas de título/meta/descripción/pills) y `JobDetailSkeleton` (breadcrumb, título, meta, 4 secciones) · `Spinner` (lucide) en cambios de ruta. Todo con `role="status"` y sin animación si `prefers-reduced-motion`.
 
 ## Íconos
 
