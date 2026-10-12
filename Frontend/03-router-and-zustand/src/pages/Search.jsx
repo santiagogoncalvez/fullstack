@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router'
 import { Pagination } from '../components/Pagination.jsx'
 import { SearchFormSection } from '../components/SearchFormSection.jsx'
 import { JobListings } from '../components/JobListings.jsx'
+import { JobCardSkeleton } from '../components/JobCardSkeleton.jsx'
 import styles from './Search.module.css'
 
 const RESULTS_PER_PAGE = 4
@@ -148,7 +149,11 @@ export default function SearchPage() {
       <section className={styles.searchResults}>
         {
           loading
-            ? <p>Cargando empleos...</p>
+            ? <div className="jobs-listings" role="status" aria-label="Cargando empleos">
+                {Array.from({ length: RESULTS_PER_PAGE }).map((_, i) => (
+                  <JobCardSkeleton key={i} />
+                ))}
+              </div>
             : error
               ? <p className="error-text">{error}</p>
               : <>

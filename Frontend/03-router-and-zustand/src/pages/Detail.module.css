@@ -7,14 +7,9 @@
   margin: 0 auto;
 }
 
-.loading,
 .error {
   padding-block: var(--space-7);
   text-align: center;
-}
-
-.loadingText {
-  color: var(--text-2);
 }
 
 .errorTitle {
