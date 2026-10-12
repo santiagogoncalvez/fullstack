@@ -157,6 +157,10 @@ button {
   cursor: not-allowed;
 }
 
+.icon-btn.is-active {
+  color: var(--accent);
+}
+
 .theme-toggle {
   display: inline-flex;
   align-items: center;

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router"
+import { Heart } from "lucide-react"
 import { Link } from "../components/Link"
 import snarkdown from 'snarkdown'
 import styles from './Detail.module.css'
@@ -72,14 +73,16 @@ function DetailApplyButton () {
 
 function DetailFavoriteButton ({ jobId }) {
   const { isFavorite, toggleFavorite } = useFavoritesStore()
+  const fav = isFavorite(jobId)
 
   return (
     <button
-      className="icon-btn"
+      className={`icon-btn${fav ? " is-active" : ""}`}
       onClick={() => toggleFavorite(jobId)}
-      aria-label={isFavorite(jobId) ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+      aria-label={fav ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+      aria-pressed={fav}
     >
-      {isFavorite(jobId) ? '❤️' : '🤍'}
+      <Heart size={18} fill={fav ? "currentColor" : "none"} />
     </button>
   )
 }

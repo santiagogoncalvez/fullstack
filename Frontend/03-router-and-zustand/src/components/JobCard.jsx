@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Heart } from "lucide-react";
 import { Link } from "./Link";
 import styles from "./JobCard.module.css";
 import { useFavoritesStore } from "../store/favoritesStore";
@@ -11,13 +12,13 @@ function JobCardFavoriteButton({ jobId }) {
 
    return (
       <button
-         className="icon-btn"
+         className={`icon-btn${fav ? " is-active" : ""}`}
          disabled={!isLoggedIn}
          onClick={() => toggleFavorite(jobId)}
          aria-label={fav ? "Quitar de favoritos" : "Agregar a favoritos"}
          aria-pressed={fav}
       >
-         {fav ? "❤️" : "🤍"}
+         <Heart size={18} fill={fav ? "currentColor" : "none"} />
       </button>
    );
 }

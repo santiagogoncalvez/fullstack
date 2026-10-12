@@ -1,3 +1,4 @@
+import { User } from 'lucide-react'
 import { useAuthStore } from '../store/authStore'
 import styles from './ProfilePage.module.css'
 
@@ -9,19 +10,7 @@ export default function Profile() {
       <div className={styles.container}>
         <div className={styles.header}>
           <div className={styles.avatar}>
-            <svg 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              viewBox="0 0 24 24" 
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-              />
-            </svg>
+            <User />
           </div>
           <h1 className={styles.name}>Usuario Demo</h1>
           <p className={styles.email}>usuario@ejemplo.com</p>
