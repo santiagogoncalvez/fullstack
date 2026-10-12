@@ -46,7 +46,7 @@ Layout: `--page 70rem` + `--gutter 1.25rem` compartidos por header, footer, home
 
 ## Componentes
 
-- Botones: `btn` + `btn-primary` / `btn-ghost` / `btn-sm`. Icon-buttons circulares 2.5rem (`icon-btn`, activo en acento). Sin transforms en hover.
+- Botones: `btn` + `btn-primary` / `btn-ghost` / `btn-sm`. Icon-buttons circulares ghost (transparentes, fondo suave en hover) de 2.5rem (`icon-btn`, activo en acento). Sin transforms en hover.
 - Cards: fondo sólido sutil, sin bordes, radius `--r-lg`. Card de empleo entera link (stretched-link en el título, fav por encima con `z-index`, sin anidado).
 - Separador de meta: `·` en card y detalle.
 - Paginación circular, activa en acento sólido.

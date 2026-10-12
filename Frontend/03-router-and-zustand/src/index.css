@@ -160,15 +160,15 @@ button {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: var(--r-full);
-  background-color: var(--bg-soft);
+  background-color: transparent;
   border: none;
   color: var(--text);
   font-size: 1rem;
-  transition: filter 0.15s;
+  transition: background-color 0.15s;
 }
 
 .icon-btn:hover {
-  filter: brightness(1.12);
+  background-color: var(--bg-soft);
 }
 
 .icon-btn:disabled {
@@ -187,14 +187,14 @@ button {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: var(--r-full);
-  background-color: var(--bg-soft);
+  background-color: transparent;
   border: none;
   color: var(--text);
-  transition: filter 0.15s;
+  transition: background-color 0.15s;
 }
 
 .theme-toggle:hover {
-  filter: brightness(1.12);
+  background-color: var(--bg-soft);
 }
 
 /* Formularios: sólidos sutiles, sin bordes */
