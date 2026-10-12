@@ -22,17 +22,17 @@
 
 [data-theme="light"] {
   color-scheme: light;
-  --bg: #fbfaf5;
-  --bg-soft: #f0e9dc;
+  --bg: #f3f6f0;
+  --bg-soft: #e4eae0;
   --surface: #ffffff;
-  --text: #1b1712;
-  --text-2: #655c4e;
+  --text: #121a15;
+  --text-2: #4f6156;
   --accent: #b33a17;
   --accent-ink: #ffffff;
   --accent-soft: rgba(179, 58, 23, 0.1);
   --green: #20603f;
   --danger: #a8321f;
-  --card-shadow: 0 1px 3px rgba(60, 45, 20, 0.14);
+  --card-shadow: 0 1px 3px rgba(20, 35, 25, 0.14);
 }
 
 :root {
@@ -234,7 +234,7 @@ select {
   padding: 0.6rem 2.4rem 0.6rem 1.1rem;
   cursor: pointer;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23a39e93' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238b948c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.9rem center;
 }
