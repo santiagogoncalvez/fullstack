@@ -36,7 +36,7 @@ export function JobCard({ job }) {
                </Link>
             </h3>
             <small>
-               {job.company} | {job.location}
+               {job.company} · {job.location}
             </small>
             <p>{job.description}</p>
             <div className="badges">
