@@ -1,9 +1,9 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { getVisiblePages } from '../lib/pagination.js'
 import styles from './Pagination.module.css'
 
 export function Pagination ({ currentPage = 1, totalPages = 10, onPageChange }) {
-  // generar un array de páginas a mostrar
-  const pages = Array.from({ length: totalPages }, (_, i) => i + 1)
+  const pages = getVisiblePages(currentPage, totalPages)
 
   const isFirstPage = currentPage === 1
   const isLastPage = currentPage === totalPages
@@ -27,7 +27,7 @@ export function Pagination ({ currentPage = 1, totalPages = 10, onPageChange }) 
 
   const handleChangePage = (event) => {
     event.preventDefault()
-    const page = Number(event.target.dataset.page)
+    const page = Number(event.currentTarget.dataset.page)
 
     if (page !== currentPage) {
       onPageChange(page)
@@ -41,30 +41,33 @@ export function Pagination ({ currentPage = 1, totalPages = 10, onPageChange }) 
   }
 
   return (
-    <nav className={styles.pagination}>
-      
+    <nav className={styles.pagination} aria-label="Paginación">
+
       <a href={buildPageUrl(currentPage - 1)} style={stylePrevButton} onClick={handlePrevClick} aria-label="Página anterior">
         <ChevronLeft size={16} />
       </a>
-      
 
-      {pages.map((page) => (
-        <a
-          key={page}
-          data-page={page}
-          href={buildPageUrl(page)}
-          className={currentPage === page ? styles.isActive : ''}
-          onClick={handleChangePage}
-        >
-          {page}
-        </a>
+
+      {pages.map((page, index) => (
+        page === 'ellipsis'
+          ? <span key={`ellipsis-${index}`} className={styles.ellipsis} aria-hidden="true">…</span>
+          : <a
+              key={page}
+              data-page={page}
+              href={buildPageUrl(page)}
+              className={currentPage === page ? styles.isActive : ''}
+              aria-current={currentPage === page ? 'page' : undefined}
+              onClick={handleChangePage}
+            >
+              {page}
+            </a>
       ))}
 
       <a href={buildPageUrl(currentPage + 1)} style={styleNextButton} onClick={handleNextClick} aria-label="Página siguiente">
         <ChevronRight size={16} />
       </a>
 
-      
+
     </nav>
   )
 }

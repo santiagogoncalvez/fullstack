@@ -25,6 +25,16 @@
   text-decoration: none;
 }
 
+.ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  color: var(--text-2);
+  user-select: none;
+}
+
 /* a.isActive: especificidad mayor que .pagination a para que aplique el color */
 .pagination a.isActive {
   background-color: var(--accent);
