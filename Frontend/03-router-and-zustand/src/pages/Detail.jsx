@@ -4,7 +4,6 @@ import { Heart } from "lucide-react"
 import { Link } from "../components/Link"
 import snarkdown from 'snarkdown'
 import styles from './Detail.module.css'
-import { useAuthStore } from "../store/authStore"
 import { useFavoritesStore } from "../store/favoritesStore"
 
 function JobSection ({ title, content }) {
@@ -46,28 +45,17 @@ function DetailPageBreadCrumb ({ job }) {
 
 function DetailPageHeader ({ job }) {
   return (
-    <>
-      <header className={styles.header}>
+    <header className={styles.header}>
+      <div className={styles.titleRow}>
         <h1 className={styles.title}>
           {job.title}
         </h1>
-        <p className={styles.meta}>
-          {job.company} · {job.location}
-        </p>
-      </header>
-
-      <DetailApplyButton />
-    </>
-  )
-}
-
-function DetailApplyButton () {
-  const { isLoggedIn } = useAuthStore()
-
-  return (
-    <button disabled={!isLoggedIn} className={styles.applyButton}>
-      {isLoggedIn ? "Aplicar ahora" : "Inicia sesión para aplicar"}
-    </button>
+        <DetailFavoriteButton jobId={job.id} />
+      </div>
+      <p className={styles.meta}>
+        {job.company} · {job.location}
+      </p>
+    </header>
   )
 }
 
@@ -142,14 +130,9 @@ export default function JobDetail () {
   }
 
   return (
-    <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1rem' }}>
+    <div className={styles.container}>
       <DetailPageBreadCrumb job={job} />
       <DetailPageHeader job={job} />
-
-      <div className={styles.detailActions}>
-        <DetailApplyButton />
-        <DetailFavoriteButton jobId={job.id} />
-      </div>
 
       <JobSection title="Descripción del puesto" content={job.content.description} />
       <JobSection title="Responsabilidades" content={job.content.responsibilities} />

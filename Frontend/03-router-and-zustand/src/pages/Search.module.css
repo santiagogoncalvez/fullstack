@@ -4,7 +4,7 @@
   padding: 1rem var(--gutter) 2rem;
 }
 
-.searchResults h2 {
-  font-size: var(--fs-h2);
+.resultCount {
+  color: var(--text-2);
   margin-bottom: 1rem;
 }

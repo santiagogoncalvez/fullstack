@@ -146,10 +146,15 @@ export default function SearchPage() {
       />
 
       <section className={styles.searchResults}>
-        <h2 style={{ textAlign: 'center' }}>Resultados de búsqueda</h2>
-
         {
-          loading ? <p>Cargando empleos...</p> : error ? <p className="error-text">{error}</p> : <JobListings jobs={jobs} />
+          loading
+            ? <p>Cargando empleos...</p>
+            : error
+              ? <p className="error-text">{error}</p>
+              : <>
+                  <p className={styles.resultCount}>{total} resultado{total === 1 ? '' : 's'} encontrado{total === 1 ? '' : 's'}</p>
+                  <JobListings jobs={jobs} />
+                </>
         }
         <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
       </section>

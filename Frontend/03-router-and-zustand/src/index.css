@@ -409,12 +409,6 @@ footer {
   color: var(--accent-ink);
 }
 
-.button-apply-job.is-applied {
-  background-color: var(--green);
-  color: #fff;
-  pointer-events: none;
-}
-
 /* Prosa (detalle) */
 .prose {
   line-height: 1.75;
