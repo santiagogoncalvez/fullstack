@@ -519,12 +519,6 @@ footer {
   }
 }
 
-.page-loader {
-  display: flex;
-  justify-content: center;
-  padding: var(--space-7) var(--gutter);
-}
-
 @media (prefers-reduced-motion: reduce) {
   .skeleton,
   .spinner {

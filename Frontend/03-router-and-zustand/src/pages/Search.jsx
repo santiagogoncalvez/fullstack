@@ -5,6 +5,7 @@ import { Pagination } from '../components/Pagination.jsx'
 import { SearchFormSection } from '../components/SearchFormSection.jsx'
 import { JobListings } from '../components/JobListings.jsx'
 import { SearchResultsSkeleton } from '../components/SearchResultsSkeleton.jsx'
+import { Skeleton } from '../components/Skeleton.jsx'
 import styles from './Search.module.css'
 
 const RESULTS_PER_PAGE = 4
@@ -149,7 +150,10 @@ export default function SearchPage() {
       <section className={styles.searchResults}>
         {
           loading
-            ? <SearchResultsSkeleton count={RESULTS_PER_PAGE} />
+            ? <>
+                <Skeleton style={{ width: "12rem", height: "1rem", marginBottom: "var(--space-4)" }} />
+                <SearchResultsSkeleton count={RESULTS_PER_PAGE} />
+              </>
             : error
               ? <p className="error-text">{error}</p>
               : <>
