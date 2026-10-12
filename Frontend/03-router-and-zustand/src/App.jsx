@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router'
 import { Header } from './components/Header.jsx'
 import { Footer } from './components/Footer.jsx'
 import { ProtectedRoute } from './components/ProtectedRoute.jsx'
+import { PageSkeleton } from './components/PageSkeleton.jsx'
 
 const HomePage = lazy(() => import('./pages/Home.jsx'))
 const SearchPage = lazy(() => import('./pages/Search.jsx'))
@@ -18,7 +19,7 @@ function App() {
     <>
       <Header />
 
-      <Suspense fallback={null}>
+      <Suspense fallback={<PageSkeleton />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/search" element={<SearchPage />} />
