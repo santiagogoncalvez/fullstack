@@ -281,7 +281,7 @@ label {
 .header-left {
   display: flex;
   align-items: center;
-  gap: var(--space-5);
+  gap: var(--space-6);
 }
 
 nav {
