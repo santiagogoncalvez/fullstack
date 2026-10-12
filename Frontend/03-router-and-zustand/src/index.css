@@ -7,31 +7,31 @@
 :root,
 [data-theme="dark"] {
   color-scheme: dark;
-  --bg: #161209;
-  --bg-soft: #201a10;
-  --surface: #262014;
-  --text: #f4eee1;
-  --text-2: #cbbfa8;
-  --accent: #e5a83b;
-  --accent-ink: #1a1408;
-  --accent-soft: rgba(229, 168, 59, 0.16);
-  --green: #2e6b4e;
-  --danger: #d96a5b;
+  --bg: #0d1310;
+  --bg-soft: #141c17;
+  --surface: #1a231d;
+  --text: #ece7d8;
+  --text-2: #a9b29b;
+  --accent: #ea5f31;
+  --accent-ink: #160d08;
+  --accent-soft: rgba(234, 95, 49, 0.14);
+  --green: #3e7d5c;
+  --danger: #e0705c;
   --card-shadow: none;
 }
 
 [data-theme="light"] {
   color-scheme: light;
-  --bg: #faf6ee;
-  --bg-soft: #efe8d8;
+  --bg: #fbfaf5;
+  --bg-soft: #f0e9dc;
   --surface: #ffffff;
-  --text: #211b12;
-  --text-2: #6e6455;
-  --accent: #8a5206;
+  --text: #1b1712;
+  --text-2: #655c4e;
+  --accent: #b33a17;
   --accent-ink: #ffffff;
-  --accent-soft: rgba(138, 82, 6, 0.1);
-  --green: #1e5c40;
-  --danger: #b23a2c;
+  --accent-soft: rgba(179, 58, 23, 0.1);
+  --green: #20603f;
+  --danger: #a8321f;
   --card-shadow: 0 1px 3px rgba(60, 45, 20, 0.14);
 }
 
@@ -405,8 +405,8 @@ footer {
 }
 
 .badge-accent {
-  background-color: var(--accent-soft);
-  color: var(--accent);
+  background-color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .button-apply-job.is-applied {
