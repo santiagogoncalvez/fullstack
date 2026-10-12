@@ -287,7 +287,8 @@ nav a:hover {
   text-decoration: none;
 }
 
-.nav-link-active {
+/* nav a.nav-link-active: especificidad mayor que nav a para que aplique el color */
+nav a.nav-link-active {
   color: var(--accent);
 }
 
@@ -364,6 +365,7 @@ footer {
 }
 
 .job-listing-card {
+  position: relative;
   background-color: var(--surface);
   box-shadow: var(--card-shadow);
   border-radius: var(--r-lg);

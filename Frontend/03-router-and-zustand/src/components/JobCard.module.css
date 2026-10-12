@@ -10,7 +10,17 @@
   text-decoration: none;
 }
 
+/* La card entera es link: el título estira su área a toda la card.
+   .actions queda por encima para que el fav no quede anidado. */
+.title::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
 .actions {
   display: flex;
   flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }

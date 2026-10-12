@@ -25,7 +25,8 @@
   text-decoration: none;
 }
 
-.isActive {
+/* a.isActive: especificidad mayor que .pagination a para que aplique el color */
+.pagination a.isActive {
   background-color: var(--accent);
   color: var(--accent-ink);
   pointer-events: none;
