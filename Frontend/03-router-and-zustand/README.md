@@ -1,4 +1,4 @@
-# LaburoDev — Frontend
+# laburoDev · Frontend
 
 Bolsa de trabajo para desarrolladores. React + Vite + react-router + zustand.
 

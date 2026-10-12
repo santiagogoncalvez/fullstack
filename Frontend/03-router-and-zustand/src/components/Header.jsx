@@ -14,7 +14,7 @@ export function Header () {
     <header>
       <div className="header-inner">
         <Link href='/' className="brand">
-          laburo<span className="brand-dev">Dev</span>
+          laburoDev
         </Link>
 
         <nav>

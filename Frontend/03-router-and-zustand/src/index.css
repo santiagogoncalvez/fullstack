@@ -278,10 +278,6 @@ label {
   text-decoration: none;
 }
 
-.brand-dev {
-  color: var(--accent);
-}
-
 nav {
   display: flex;
   align-items: center;

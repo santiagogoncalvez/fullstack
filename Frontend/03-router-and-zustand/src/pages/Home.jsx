@@ -41,7 +41,7 @@ export default function HomePage () {
 
       <section className={styles.section}>
         <header>
-          <h2>¿Por qué LaburoDev?</h2>
+          <h2>¿Por qué laburoDev?</h2>
           <p>Conectamos a los mejores talentos con las empresas más innovadoras.</p>
         </header>
 

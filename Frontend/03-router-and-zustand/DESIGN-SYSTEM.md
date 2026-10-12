@@ -1,12 +1,11 @@
-# LaburoDev — Sistema de diseño
+# laburoDev · Sistema de diseño
 
 Fuente única de verdad visual del frontend. Todo cambio de estilo debe respetar este documento.
 
 ## Marca
 
-- Nombre: `laburoDev` (camelCase, solo texto, sin logo).
-- Render: `laburo` en color de texto + `Dev` en acento (`Header.jsx`).
-- Favicon: cuadrado ámbar con L (inline SVG en `index.html`).
+- Nombre: `laburoDev` (camelCase, solo texto en color normal, sin logo ni acento).
+- Favicon: cuadrado verde dark con `lD` en color de texto (inline SVG en `index.html`).
 
 ## Tipografía
 
@@ -16,7 +15,7 @@ Fuente única de verdad visual del frontend. Todo cambio de estilo debe respetar
 
 ## Color
 
-Dark (default) — negro verdoso + brasa:
+Dark (default), negro verdoso + brasa:
 
 | Token      | Valor     | Uso                                    |
 | ---------- | --------- | -------------------------------------- |
@@ -59,4 +58,4 @@ Solo **lucide-react** (Search, ChevronLeft/Right, Sun, Moon, User, Heart, X). Ce
 
 ## Prohibido (patrones IA)
 
-Gradientes violeta/azul · glassmorphism/blur · 3 cards iguales en fila · sans genéricas (Inter) · hero centrado título+subtítulo+botón · itálicas en títulos · labels en mayúsculas con letter-spacing · sobrecarga de etiquetas · bordes fuertes (solo fondos sólidos sutiles) · pesos fuera de 400/500.
+Guiones largos `—` en cualquier copy · Gradientes violeta/azul · glassmorphism/blur · 3 cards iguales en fila · sans genéricas (Inter) · hero centrado título+subtítulo+botón · itálicas en títulos · labels en mayúsculas con letter-spacing · sobrecarga de etiquetas · bordes fuertes (solo fondos sólidos sutiles) · pesos fuera de 400/500.

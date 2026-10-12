@@ -130,13 +130,13 @@ export default function SearchPage() {
   } = useFilters()
 
   const title = loading
-    ? `Cargando... - LaburoDev`
-    : `Resultados: ${total}, Página ${currentPage} - LaburoDev`
+    ? `Cargando... - laburoDev`
+    : `Resultados: ${total}, Página ${currentPage} - laburoDev`
 
   return (
     <main>
       <title>{title}</title>
-      <meta name="description" content="Explora miles de oportunidades laborales en el sector tecnológico. Encontrá tu próximo empleo en LaburoDev." />
+      <meta name="description" content="Explora miles de oportunidades laborales en el sector tecnológico. Encontrá tu próximo empleo en laburoDev." />
 
       <SearchFormSection
         initialText={textToFilter}
