@@ -1,5 +1,6 @@
 import { Building2, Heart, MapPin, Signal } from "lucide-react";
 import { Link } from "./Link";
+import { formatJobLevel } from "../constants/levels.js";
 import styles from "./JobCard.module.css";
 import { useFavoritesStore } from "../store/favoritesStore";
 
@@ -46,7 +47,7 @@ export function JobCard({ job }) {
                </span>
                <span className="meta-item">
                   <Signal size={14} aria-hidden="true" />
-                  {job.data.level}
+                  {formatJobLevel(job.data.level)}
                </span>
             </div>
             <p>{job.description}</p>

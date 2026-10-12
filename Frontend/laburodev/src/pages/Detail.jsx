@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router"
 import { Building2, Heart, MapPin, Signal } from "lucide-react"
 import { JobDetailSkeleton } from "../components/JobDetailSkeleton"
+import { formatJobLevel } from "../constants/levels.js"
 import { Link } from "../components/Link"
 import snarkdown from 'snarkdown'
 import styles from './Detail.module.css'
@@ -62,7 +63,7 @@ function DetailPageHeader ({ job }) {
         </span>
         <span className="meta-item">
           <Signal size={14} aria-hidden="true" />
-          {job.data.level}
+          {formatJobLevel(job.data.level)}
         </span>
       </div>
     </header>

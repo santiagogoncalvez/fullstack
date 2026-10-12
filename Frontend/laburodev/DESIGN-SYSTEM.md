@@ -55,7 +55,11 @@ Layout: `--page 70rem` + `--gutter 1.25rem` compartidos por header, footer, home
 
 ## Íconos
 
-Solo **lucide-react** (Search, ChevronLeft/Right, Sun, Moon, User, Heart, X). Cero emojis y cero SVG manuales en `src`. Los íconos heredan `currentColor`.
+Solo **lucide-react** (Search, ChevronLeft/Right, Sun, Moon, User, Heart, X, Building2, MapPin, Signal). Cero emojis y cero SVG manuales en `src`. Los íconos heredan `currentColor`.
+
+## Textos
+
+Parseos de valores API→UI en `src/constants/` (mapa + función con fallback al valor original).
 
 ## Prohibido (patrones IA)
 
