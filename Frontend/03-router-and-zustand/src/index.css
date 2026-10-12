@@ -278,6 +278,12 @@ label {
   text-decoration: none;
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
 nav {
   display: flex;
   align-items: center;

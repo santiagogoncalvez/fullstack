@@ -13,24 +13,26 @@ export function Header () {
   return (
     <header>
       <div className="header-inner">
-        <Link href='/' className="brand">
-          laburoDev
-        </Link>
+        <div className="header-left">
+          <Link href='/' className="brand">
+            laburoDev
+          </Link>
 
-        <nav>
-          <NavLink
-            className={({ isActive }) => isActive ? 'nav-link-active' : ''}
-            to="/search">Empleos</NavLink>
-            {
-              isLoggedIn && (
-                <NavLink
-                  className={({ isActive }) => isActive ? 'nav-link-active' : ''}
-                  to="/profile">
-                    Perfil {numberOfFavorites > 0 && `(${numberOfFavorites})`}
-                </NavLink>
-              )
-            }
-        </nav>
+          <nav>
+            <NavLink
+              className={({ isActive }) => isActive ? 'nav-link-active' : ''}
+              to="/search">Empleos</NavLink>
+              {
+                isLoggedIn && (
+                  <NavLink
+                    className={({ isActive }) => isActive ? 'nav-link-active' : ''}
+                    to="/profile">
+                      Perfil {numberOfFavorites > 0 && `(${numberOfFavorites})`}
+                  </NavLink>
+                )
+              }
+          </nav>
+        </div>
 
         <div className="header-actions">
           <ThemeToggle />
