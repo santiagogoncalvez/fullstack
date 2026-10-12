@@ -1,9 +1,11 @@
 .container {
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   gap: var(--space-5);
   padding: var(--space-6) var(--gutter);
   max-width: var(--page);
+  width: 100%;
   margin: 0 auto;
 }
 
