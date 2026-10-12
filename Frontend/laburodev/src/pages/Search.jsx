@@ -103,6 +103,8 @@ const useFilters = () => {
 
   const handlePageChange = (page) => {
     setSearchParams(writeParams({ text: textToFilter, filters, page }))
+    // Misma ruta (?page=): el reset general no dispara, el scroll va en la acción
+    window.scrollTo(0, 0)
   }
 
   const handleSearch = (nextFilters) => {
