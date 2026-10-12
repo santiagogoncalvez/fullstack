@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router"
-import { Heart } from "lucide-react"
+import { Building2, Heart, MapPin, Signal } from "lucide-react"
 import { Link } from "../components/Link"
 import snarkdown from 'snarkdown'
 import styles from './Detail.module.css'
@@ -50,9 +50,20 @@ function DetailPageHeader ({ job }) {
         </h1>
         <DetailFavoriteButton jobId={job.id} />
       </div>
-      <p className={styles.meta}>
-        {job.company} · {job.location}
-      </p>
+      <div className="meta-row">
+        <span className="meta-item">
+          <Building2 size={14} aria-hidden="true" />
+          {job.company}
+        </span>
+        <span className="meta-item">
+          <MapPin size={14} aria-hidden="true" />
+          {job.location}
+        </span>
+        <span className="meta-item">
+          <Signal size={14} aria-hidden="true" />
+          {job.data.level}
+        </span>
+      </div>
     </header>
   )
 }
