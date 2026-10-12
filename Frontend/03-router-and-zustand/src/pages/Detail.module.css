@@ -1,8 +1,8 @@
-/* pages/JobDetail.module.css */
 .container {
-  padding-block: 2rem;
-  max-width: 64rem;
+  padding-block: 2rem 3rem;
+  max-width: 44rem;
   margin: 0 auto;
+  padding-inline: 1.25rem;
 }
 
 .loading,
@@ -12,32 +12,22 @@
 }
 
 .loadingText {
-  color: var(--text-muted);
+  color: var(--text-2);
 }
 
 .errorTitle {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--text-primary);
+  font-size: var(--fs-h2);
   margin-bottom: 1rem;
 }
 
 .errorButton {
-  color: #09f;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-.errorButton:hover {
-  text-decoration: underline;
+  composes: btn btn-ghost from global;
 }
 
 .breadcrumb {
-  font-size: 0.875rem;
-  color: var(--text-muted);
-  margin-bottom: 2rem;
+  font-size: var(--fs-small);
+  color: var(--text-2);
+  margin-bottom: 1.5rem;
 }
 
 .breadcrumbButton {
@@ -47,11 +37,12 @@
   cursor: pointer;
   padding: 0;
   font-size: inherit;
+  font-family: inherit;
   text-decoration: none;
 }
 
 .breadcrumbButton:hover {
-  color: var(--text-primary);
+  color: var(--text);
 }
 
 .breadcrumbSeparator {
@@ -59,69 +50,43 @@
 }
 
 .breadcrumbCurrent {
-  color: var(--text-primary);
+  color: var(--text);
 }
 
 .header {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .title {
-  font-size: 2.25rem;
-  font-weight: bold;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
+  font-size: var(--fs-h1);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
 }
 
 .meta {
-  font-size: 1.25rem;
-  color: var(--text-secondary);
+  color: var(--text-2);
+}
+
+.detailActions {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  margin-bottom: 2.5rem;
 }
 
 .applyButton {
-  width: 100%;
-  background: #09f;
-  color: white;
-  border: none;
-  font-weight: 600;
-  padding: 0.75rem 2rem;
-  border-radius: 0.5rem;
-  margin-bottom: 3rem;
-  transition: background 0.2s;
-  cursor: pointer;
-}
-
-.applyButton:hover {
-  background: #0088e6;
-}
-
-.applyButton:disabled {
-  background: #666;
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-.applyButton:disabled:hover {
-  background: #666;
-}
-
-@media (min-width: 640px) {
-  .applyButton {
-    width: auto;
-  }
+  composes: btn btn-primary from global;
 }
 
 .section {
-  margin-bottom: 3rem;
+  margin-bottom: 2.25rem;
 }
 
 .sectionTitle {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
+  font-size: var(--fs-h3);
+  margin-bottom: 0.75rem;
 }
 
 .sectionContent {
-  color: var(--text-secondary);
+  color: var(--text-2);
 }

@@ -56,7 +56,6 @@ function DetailPageHeader ({ job }) {
       </header>
 
       <DetailApplyButton />
-      <DetailFavoriteButton jobId={job.id} />
     </>
   )
 }
@@ -76,8 +75,9 @@ function DetailFavoriteButton ({ jobId }) {
 
   return (
     <button
+      className="icon-btn"
       onClick={() => toggleFavorite(jobId)}
-      aria-label={isFavorite(jobId) ? 'Remove from favorites' : 'Add to favorites'}
+      aria-label={isFavorite(jobId) ? 'Quitar de favoritos' : 'Agregar a favoritos'}
     >
       {isFavorite(jobId) ? '❤️' : '🤍'}
     </button>
@@ -142,6 +142,11 @@ export default function JobDetail () {
     <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1rem' }}>
       <DetailPageBreadCrumb job={job} />
       <DetailPageHeader job={job} />
+
+      <div className={styles.detailActions}>
+        <DetailApplyButton />
+        <DetailFavoriteButton jobId={job.id} />
+      </div>
 
       <JobSection title="Descripción del puesto" content={job.content.description} />
       <JobSection title="Responsabilidades" content={job.content.responsibilities} />

@@ -1,8 +1,11 @@
+import { Link } from "../components/Link"
+
 export default function NotFoundPage () {
   return (
-    <main>
-      <h1>404 - Página no encontrada</h1>
-      <p>Lo sentimos, la página que buscas no existe.</p>
+    <main style={{ maxWidth: '70rem', margin: '0 auto', padding: '4rem 1.25rem', textAlign: 'left' }}>
+      <h1>404 — Página no encontrada</h1>
+      <p style={{ color: 'var(--text-2)', margin: '0.5rem 0 1.5rem' }}>La página que buscas no existe.</p>
+      <Link href="/" className="btn btn-primary">Volver al inicio</Link>
     </main>
   )
 }

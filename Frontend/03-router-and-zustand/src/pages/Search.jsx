@@ -29,6 +29,7 @@ const useFilters = () => {
   const [jobs, setJobs] = useState([])
   const [total, setTotal] = useState(0)
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     async function fetchJobs() {
@@ -54,8 +55,9 @@ const useFilters = () => {
 
         setJobs(json.data)
         setTotal(json.total)
+        setError(null)
       } catch (error) {
-        console.error('Error fetching jobs:', error)
+        setError('No se pudieron cargar los empleos. Revisá que la API esté corriendo.')
       } finally {
         setLoading(false)
       }
@@ -100,6 +102,7 @@ const useFilters = () => {
   return {
     filters,
     loading,
+    error,
     jobs,
     total,
     totalPages,
@@ -117,6 +120,7 @@ export default function SearchPage() {
     jobs,
     total,
     loading,
+    error,
     totalPages,
     currentPage,
     textToFilter,
@@ -126,13 +130,13 @@ export default function SearchPage() {
   } = useFilters()
 
   const title = loading
-    ? `Cargando... - DevJobs`
-    : `Resultados: ${total}, Página ${currentPage} - DevJobs`
+    ? `Cargando... - LaburoDev`
+    : `Resultados: ${total}, Página ${currentPage} - LaburoDev`
 
   return (
     <main>
       <title>{title}</title>
-      <meta name="description" content="Explora miles de oportunidades laborales en el sector tecnológico. Encuentra tu próximo empleo en DevJobs." />
+      <meta name="description" content="Explora miles de oportunidades laborales en el sector tecnológico. Encontrá tu próximo empleo en LaburoDev." />
 
       <SearchFormSection
         initialText={textToFilter}
@@ -145,7 +149,7 @@ export default function SearchPage() {
         <h2 style={{ textAlign: 'center' }}>Resultados de búsqueda</h2>
 
         {
-          loading ? <p>Cargando empleos...</p> : <JobListings jobs={jobs} />
+          loading ? <p>Cargando empleos...</p> : error ? <p className="error-text">{error}</p> : <JobListings jobs={jobs} />
         }
         <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
       </section>

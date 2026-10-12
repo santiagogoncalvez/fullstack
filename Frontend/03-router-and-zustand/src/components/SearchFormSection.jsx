@@ -97,7 +97,7 @@ export function SearchFormSection ({ initialFilters, onTextFilter, onSearch, ini
                  defaultValue={initialText}
               />
 
-              <button onClick={handleClearInput}>✖︎</button>
+              <button type="button" className="icon-btn" onClick={handleClearInput} aria-label="Limpiar búsqueda">✖︎</button>
            </div>
 
            <div className="search-filters">
