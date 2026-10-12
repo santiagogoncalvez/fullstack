@@ -1,15 +1,22 @@
 import { JobCard } from './JobCard.jsx'
 
-export function JobListings ({ jobs }) {
+export function JobListings ({ jobs, onClear }) {
   return (
     <>
       <div className="jobs-listings">
         {
           jobs.length === 0 && (
-            <p style={{ textAlign: 'center', padding: '1rem', textWrap: 'balance' }}>No se han encontrado empleos que coincidan con los criterios de búsqueda.</p>
+            <div className="empty-state">
+              <p>No se han encontrado empleos que coincidan con los criterios de búsqueda.</p>
+              {onClear && (
+                <button type="button" className="btn btn-ghost btn-sm" onClick={onClear}>
+                  Limpiar búsqueda
+                </button>
+              )}
+            </div>
           )
         }
-        
+
         {jobs.map(job => (
           <JobCard key={job.id} job={job} />
         ))}

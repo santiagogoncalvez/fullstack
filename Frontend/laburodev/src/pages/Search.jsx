@@ -117,6 +117,11 @@ const useFilters = () => {
     )
   }
 
+  // Mismo mecanismo que la cruz del buscador: limpia el texto vía URL
+  const handleClearSearch = () => {
+    handleTextFilter("")
+  }
+
   return {
     filters,
     loading,
@@ -128,7 +133,8 @@ const useFilters = () => {
     textToFilter,
     handlePageChange,
     handleSearch,
-    handleTextFilter
+    handleTextFilter,
+    handleClearSearch
   }
 }
 
@@ -144,7 +150,8 @@ export default function SearchPage() {
     textToFilter,
     handlePageChange,
     handleSearch,
-    handleTextFilter
+    handleTextFilter,
+    handleClearSearch
   } = useFilters()
 
   const title = loading
@@ -174,7 +181,7 @@ export default function SearchPage() {
               ? <p className="error-text">{error}</p>
               : <>
                   <p className={styles.resultCount}>{total} resultado{total === 1 ? '' : 's'} encontrado{total === 1 ? '' : 's'}</p>
-                  <JobListings jobs={jobs} />
+                  <JobListings jobs={jobs} onClear={handleClearSearch} />
                 </>
         }
         {totalPages > 1 && (
