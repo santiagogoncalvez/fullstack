@@ -222,7 +222,7 @@
         "microservices"
       ],
       "mode": "bogota",
-      "level": "mid"
+      "level": "mid-level"
     },
     "content": {
       "description": "APIWorks busca un Backend Developer con experiencia en Node.js para desarrollar APIs robustas y escalables. Trabajarás en arquitecturas de microservicios y sistemas distribuidos de alto rendimiento.",
