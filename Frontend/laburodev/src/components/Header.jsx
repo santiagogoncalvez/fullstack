@@ -45,7 +45,7 @@ export function Header () {
 }
 
 const HeaderUserButton = () => {
-  const { isLoggedIn, login, logout } = useAuthStore()
+  const { isLoggedIn, logout } = useAuthStore()
   const { clearFavorites } = useFavoritesStore()
 
   const handleLogout = () => {
@@ -53,7 +53,7 @@ const HeaderUserButton = () => {
     clearFavorites()
   }
 
-  return isLoggedIn
-    ? <button className="btn btn-ghost btn-sm" onClick={handleLogout}>Cerrar sesión</button>
-    : <button className="btn btn-primary btn-sm" onClick={login}>Iniciar sesión</button>
+  if (!isLoggedIn) return null
+
+  return <button className="btn btn-ghost btn-sm" onClick={handleLogout}>Cerrar sesión</button>
 }
