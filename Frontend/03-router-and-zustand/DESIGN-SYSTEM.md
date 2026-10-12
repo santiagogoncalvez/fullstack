@@ -29,9 +29,9 @@ Dark (default), negro verdoso + brasa:
 | `--green`  | `#3e7d5c` | estado aplicado                        |
 | `--danger` | `#e0705c` | errores                                |
 
-Light (misma familia, en claro): papel verdoso `bg #f3f6f0` · `soft #e4eae0` · `surface #ffffff` · tinta verde `text #121a15` · `text2 #4f6156` · misma brasa `accent #b33a17` · `ink #ffffff` · `green #20603f` · `danger #a8321f`. Sombra de cards solo en light (`--card-shadow`).
+Light (misma familia, en claro): papel verdoso `bg #f3f6f0` · `soft #e4eae0` · `surface #fafcf7` (nunca blanco puro) · tinta verde `text #121a15` · `text2 #4f6156` · misma brasa `accent #b33a17` · `ink #fafcf7` · `green #20603f` · `danger #a8321f`. Sombra de cards solo en light (`--card-shadow`).
 
-Contrastes verificados (mínimo 4.5): dark text 15.2/13.0 · text2 8.5/7.3 · accent 5.5/4.8 · ink/accent 5.6 · blanco/green 4.9 · danger 5.9. Light text 16.2/17.7 · text2 6.0/6.6 · accent 5.4/5.9 · blanco/accent 5.9 · blanco/green 7.4 · danger 6.1.
+Contrastes verificados (mínimo 4.5): dark text 15.2/13.0 · text2 8.5/7.3 · accent 5.5/4.8 · ink/accent 5.6 · blanco/green 4.9 · danger 5.9. Light text 16.2/17.1 · text2 6.0/6.6 · accent 5.4/5.9 · ink/accent 5.7 · ink/green 7.2 · danger 6.1.
 
 Mapa de uso: textos sobre `bg`/`surface` · CTA sólido `accent` + `ink`, hover solo brillo · links `accent` con subrayado solo en hover · pills solo tecnologías (`bg-soft` + `text2`) · foco visible anillo `accent` en todo.
 
@@ -59,4 +59,4 @@ Solo **lucide-react** (Search, ChevronLeft/Right, Sun, Moon, User, Heart, X). Ce
 
 ## Prohibido (patrones IA)
 
-Guiones largos `—` en cualquier copy · Gradientes violeta/azul · glassmorphism/blur · 3 cards iguales en fila · sans genéricas (Inter) · hero centrado título+subtítulo+botón · itálicas en títulos · labels en mayúsculas con letter-spacing · sobrecarga de etiquetas · bordes fuertes (solo fondos sólidos sutiles) · pesos fuera de 400/500.
+Blanco puro (`#fff`) y negro puro (`#000`) en cualquier token · Guiones largos `—` en cualquier copy · Gradientes violeta/azul · glassmorphism/blur · 3 cards iguales en fila · sans genéricas (Inter) · hero centrado título+subtítulo+botón · itálicas en títulos · labels en mayúsculas con letter-spacing · sobrecarga de etiquetas · bordes fuertes (solo fondos sólidos sutiles) · pesos fuera de 400/500.
