@@ -1,9 +1,14 @@
-import { useId, useState, useRef } from "react"
+import { useId, useState, useRef, useEffect } from "react"
 import { Search, X } from "lucide-react"
 
-const useSearchForm = ({ idTechnology, idLocation, idExperienceLevel, idText, onSearch, onTextFilter }) => {
+const useSearchForm = ({ idTechnology, idLocation, idExperienceLevel, idText, initialText, onSearch, onTextFilter }) => {
   const timeoutId = useRef(null)
-  const [searchText, setSearchText] = useState("")
+  const [searchText, setSearchText] = useState(initialText ?? "")
+
+  // La URL manda (atrás/adelante): refleja el texto en el estado
+  useEffect(() => {
+    setSearchText(initialText ?? "")
+  }, [initialText])
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -37,10 +42,18 @@ const useSearchForm = ({ idTechnology, idLocation, idExperienceLevel, idText, on
     }, 500)
   }
 
+  const clearSearch = () => {
+    if (timeoutId.current) {
+      clearTimeout(timeoutId.current)
+    }
+    setSearchText("")
+  }
+
   return {
     searchText,
     handleSubmit,
-    handleTextChange
+    handleTextChange,
+    clearSearch
   }
 }
 
@@ -52,15 +65,25 @@ export function SearchFormSection ({ initialFilters, onTextFilter, onSearch, ini
 
   const inputRef = useRef()
 
+  // La URL manda (atrás/adelante): refleja el texto en el input no controlado
+  useEffect(() => {
+    if (inputRef.current && inputRef.current.value !== (initialText ?? "")) {
+      inputRef.current.value = initialText ?? ""
+    }
+  }, [initialText])
+
   const {
+    searchText,
     handleSubmit,
-    handleTextChange
-  } = useSearchForm({ idTechnology, idLocation, idExperienceLevel, idText, onSearch, onTextFilter })
+    handleTextChange,
+    clearSearch
+  } = useSearchForm({ idTechnology, idLocation, idExperienceLevel, idText, initialText, onSearch, onTextFilter })
 
   const handleClearInput = (event) => {
     event.preventDefault()
 
     inputRef.current.value = ""
+    clearSearch()
     onTextFilter("")
   }
 
@@ -83,10 +106,15 @@ export function SearchFormSection ({ initialFilters, onTextFilter, onSearch, ini
                  defaultValue={initialText}
               />
 
-              <button type="button" className="icon-btn" onClick={handleClearInput} aria-label="Limpiar búsqueda"><X size={18} /></button>
+              {searchText ? (
+                 <button type="button" className="icon-btn" onClick={handleClearInput} aria-label="Limpiar búsqueda"><X size={18} /></button>
+              ) : null}
            </div>
 
-           <div className="search-filters">
+           <div
+               className="search-filters"
+               key={`${initialFilters.technology}|${initialFilters.location}|${initialFilters.experienceLevel}`}
+            >
               <select
                  name={idTechnology}
                  id="filter-technology"

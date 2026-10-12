@@ -25,7 +25,7 @@ const useFilters = () => {
 
   const [currentPage, setCurrentPage] = useState(() => {
     const page = Number(searchParams.get('page'))
-    return Number.isNaN(page) ? page : 1
+    return Number.isInteger(page) && page > 0 ? page : 1
   })
 
   const [jobs, setJobs] = useState([])
@@ -68,22 +68,42 @@ const useFilters = () => {
     fetchJobs()
   }, [filters, currentPage, textToFilter])
 
+  // Atrás/adelante del navegador: la URL manda, el estado la sigue
   useEffect(() => {
-    setSearchParams(() => {
-      // Clear all existing params
-      const params = new URLSearchParams()
-      // Add only needed params
-      if (textToFilter) params.set('text', textToFilter)
-      if (filters.technology) params.set('technology', filters.technology)
-      if (filters.location) params.set('type', filters.location)
-      if (filters.experienceLevel) params.set('level', filters.experienceLevel)
+    const urlFilters = {
+      technology: searchParams.get('technology') || '',
+      location: searchParams.get('type') || '',
+      experienceLevel: searchParams.get('level') || ''
+    }
+    const urlText = searchParams.get('text') || ''
+    const page = Number(searchParams.get('page'))
+    const urlPage = Number.isInteger(page) && page > 0 ? page : 1
 
-      if (currentPage > 1) params.set('page', currentPage)
+    setFilters((f) => (
+      f.technology === urlFilters.technology &&
+      f.location === urlFilters.location &&
+      f.experienceLevel === urlFilters.experienceLevel
+    ) ? f : urlFilters)
+    setTextToFilter((t) => (t === urlText ? t : urlText))
+    setCurrentPage((p) => (p === urlPage ? p : urlPage))
+  }, [searchParams])
 
-      return params
-    })
+  useEffect(() => {
+    // Clear all existing params
+    const params = new URLSearchParams()
+    // Add only needed params
+    if (textToFilter) params.set('text', textToFilter)
+    if (filters.technology) params.set('technology', filters.technology)
+    if (filters.location) params.set('type', filters.location)
+    if (filters.experienceLevel) params.set('level', filters.experienceLevel)
 
-  }, [filters, currentPage, textToFilter, setSearchParams])
+    if (currentPage > 1) params.set('page', currentPage)
+
+    // Sin cambios en la URL no se escribe: evita entradas duplicadas en el historial
+    if (params.toString() === searchParams.toString()) return
+    setSearchParams(params)
+
+  }, [filters, currentPage, textToFilter, setSearchParams, searchParams])
 
   const totalPages = Math.ceil(total / RESULTS_PER_PAGE)
 
@@ -161,7 +181,9 @@ export default function SearchPage() {
                   <JobListings jobs={jobs} />
                 </>
         }
-        <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
+        {totalPages > 1 && (
+          <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
+        )}
       </section>
     </main>
   )
