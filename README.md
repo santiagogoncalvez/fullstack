@@ -16,7 +16,7 @@ Estoy en la parte práctica del curso https://www.jscamp.dev/ (`De cero a Full S
 Hecho hasta ahora:
 
 - `Backend/NodeJs y express/fundamentos-nodejs/` — servidor con `node:http`, rutas `/users` y `/health`, query params `limit/offset`, `POST /users`, `.env` con `PORT`.
-- `Backend/NodeJs y express/express/` — API REST de empleos `/jobs` con Express 5: `GET /jobs` con filtros (`text, title, level, type, technology`) + paginación (`limit/offset`), `GET /jobs/:id`, `POST /`, `PUT /:id`, `PATCH /:id`. Arquitectura `routes / controllers / models`, CORS, `jobs.json` como persistencia temporal.
+- `Backend/NodeJs y express/laburodev-api/` — API REST de empleos `/jobs` con Express 5: `GET /jobs` con filtros (`text, title, level, type, technology`) + paginación (`limit/offset`), `GET /jobs/:id`, `POST /`, `PUT /:id`, `PATCH /:id`. Arquitectura `routes / controllers / models`, CORS, `jobs.json` como persistencia temporal.
 - `Backend/PostreSQL/tutorial documentacion/` — inicio del tutorial oficial de PostgreSQL.
 - `Frontend/laburodev/` — app de empleos en React + Vite: router propio + `react-router`, `zustand` para auth y favoritos, `Context` para auth/favs, búsqueda, paginación, login/register, rutas protegidas.
 
@@ -46,7 +46,7 @@ Frontend/
 
 ```bash
 # API Express
-cd "Backend/NodeJs y express/express"
+cd "Backend/NodeJs y express/laburodev-api"
 npm install
 node app.js
 # GET http://localhost:3000/jobs
