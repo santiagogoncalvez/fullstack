@@ -144,8 +144,13 @@ button {
 }
 
 .btn-ghost {
-  background-color: var(--bg-soft);
+  background-color: transparent;
   color: var(--text);
+}
+
+.btn-ghost:hover {
+  background-color: var(--bg-soft);
+  filter: none;
 }
 
 .btn-sm {
