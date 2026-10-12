@@ -13,20 +13,24 @@ const RESULTS_PER_PAGE = 4
 const useFilters = () => {
   const [searchParams, setSearchParams] = useSearchParams()
 
-  const [filters, setFilters] = useState(() => {
+  const readFromParams = (sp) => {
+    const page = Number(sp.get('page'))
     return {
-      technology: searchParams.get('technology') || '',
-      location: searchParams.get('type') || '',
-      experienceLevel: searchParams.get('level') || ''
+      filters: {
+        technology: sp.get('technology') || '',
+        location: sp.get('type') || '',
+        experienceLevel: sp.get('level') || ''
+      },
+      text: sp.get('text') || '',
+      page: Number.isInteger(page) && page > 0 ? page : 1
     }
-  })
+  }
 
-  const [textToFilter, setTextToFilter] = useState(() => searchParams.get('text') || '')
+  const [filters, setFilters] = useState(() => readFromParams(searchParams).filters)
 
-  const [currentPage, setCurrentPage] = useState(() => {
-    const page = Number(searchParams.get('page'))
-    return Number.isInteger(page) && page > 0 ? page : 1
-  })
+  const [textToFilter, setTextToFilter] = useState(() => readFromParams(searchParams).text)
+
+  const [currentPage, setCurrentPage] = useState(() => readFromParams(searchParams).page)
 
   const [jobs, setJobs] = useState([])
   const [total, setTotal] = useState(0)
@@ -68,57 +72,49 @@ const useFilters = () => {
     fetchJobs()
   }, [filters, currentPage, textToFilter])
 
-  // Atrás/adelante del navegador: la URL manda, el estado la sigue
+  // Atrás/adelante del navegador: la URL manda, el estado la sigue.
+  // Este efecto nunca escribe la URL, solo la lee: no hay ciclo posible.
   useEffect(() => {
-    const urlFilters = {
-      technology: searchParams.get('technology') || '',
-      location: searchParams.get('type') || '',
-      experienceLevel: searchParams.get('level') || ''
-    }
-    const urlText = searchParams.get('text') || ''
-    const page = Number(searchParams.get('page'))
-    const urlPage = Number.isInteger(page) && page > 0 ? page : 1
+    const next = readFromParams(searchParams)
 
     setFilters((f) => (
-      f.technology === urlFilters.technology &&
-      f.location === urlFilters.location &&
-      f.experienceLevel === urlFilters.experienceLevel
-    ) ? f : urlFilters)
-    setTextToFilter((t) => (t === urlText ? t : urlText))
-    setCurrentPage((p) => (p === urlPage ? p : urlPage))
+      f.technology === next.filters.technology &&
+      f.location === next.filters.location &&
+      f.experienceLevel === next.filters.experienceLevel
+    ) ? f : next.filters)
+    setTextToFilter((t) => (t === next.text ? t : next.text))
+    setCurrentPage((p) => (p === next.page ? p : next.page))
   }, [searchParams])
 
-  useEffect(() => {
-    // Clear all existing params
+  // La URL solo se escribe acá (acciones del usuario), nunca en efectos.
+  const writeParams = ({ text, filters, page }) => {
     const params = new URLSearchParams()
-    // Add only needed params
-    if (textToFilter) params.set('text', textToFilter)
+    if (text) params.set('text', text)
     if (filters.technology) params.set('technology', filters.technology)
     if (filters.location) params.set('type', filters.location)
     if (filters.experienceLevel) params.set('level', filters.experienceLevel)
 
-    if (currentPage > 1) params.set('page', currentPage)
+    if (page > 1) params.set('page', page)
 
-    // Sin cambios en la URL no se escribe: evita entradas duplicadas en el historial
-    if (params.toString() === searchParams.toString()) return
-    setSearchParams(params)
-
-  }, [filters, currentPage, textToFilter, setSearchParams, searchParams])
+    return params
+  }
 
   const totalPages = Math.ceil(total / RESULTS_PER_PAGE)
 
   const handlePageChange = (page) => {
-    setCurrentPage(page)
+    setSearchParams(writeParams({ text: textToFilter, filters, page }))
   }
 
-  const handleSearch = (filters) => {
-    setFilters(filters)
-    setCurrentPage(1)
+  const handleSearch = (nextFilters) => {
+    setSearchParams(writeParams({ text: textToFilter, filters: nextFilters, page: 1 }))
   }
 
   const handleTextFilter = (newTextToFilter) => {
-    setTextToFilter(newTextToFilter)
-    setCurrentPage(1)
+    // replace: tipear no llena el historial de entradas intermedias
+    setSearchParams(
+      writeParams({ text: newTextToFilter, filters, page: 1 }),
+      { replace: true }
+    )
   }
 
   return {
