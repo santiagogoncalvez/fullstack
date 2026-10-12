@@ -1,10 +1,10 @@
 import jobs from "../jobs.json" with { type: "json" };
+import { randomUUID } from "node:crypto";
 import { DEFAULTS } from "../config.js";
 
 export class JobModel {
    static async getAll({
       text,
-      title,
       level,
       type,
       limit = DEFAULTS.LIMIT_PAGINATION,
@@ -30,13 +30,9 @@ export class JobModel {
 
       if (technology) {
          filteredJobs = filteredJobs.filter((job) =>
-            job.data.technology.includes(technology),
-         );
-      }
-
-      if (title) {
-         filteredJobs = filteredJobs.filter((job) =>
-            job.title.includes(title),
+            job.data.technology.some(
+               (t) => t.toLowerCase() === technology.toLowerCase(),
+            ),
          );
       }
 
@@ -63,7 +59,7 @@ export class JobModel {
    static async create({ title, company, location, data }) {
       const newJob = {
          // id es un campo obligatorio
-         id: crypto.randomUUID(), // generamos un id aleatorio
+         id: randomUUID(), // generamos un id aleatorio
          title,
          company,
          location, // location es opcional
@@ -132,5 +128,17 @@ export class JobModel {
       jobs[jobIndex] = updatedJob;
 
       return updatedJob;
+   }
+
+   static async delete(id) {
+      const jobIndex = jobs.findIndex((job) => job.id === id);
+
+      if (jobIndex === -1) {
+         return false;
+      }
+
+      jobs.splice(jobIndex, 1);
+
+      return true;
    }
 }

@@ -5,7 +5,6 @@ export class JobController {
    static async getAll(req, res) {
       const {
          text,
-         title,
          level,
          type,
          limit = DEFAULTS.LIMIT_PAGINATION,
@@ -13,26 +12,39 @@ export class JobController {
          technology,
       } = req.query;
 
+      const limitNumber = Number(limit);
+      const offsetNumber = Number(offset);
+
+      if (
+         !Number.isInteger(limitNumber) ||
+         !Number.isInteger(offsetNumber) ||
+         limitNumber < 1 ||
+         offsetNumber < 0
+      ) {
+         return res
+            .status(400)
+            .json({ message: "limit and offset must be valid numbers" });
+      }
+
       const {
          data,
          total,
-         limit: limitNumber,
-         offset: offsetNumber,
+         limit: responseLimit,
+         offset: responseOffset,
       } = await JobModel.getAll({
          text,
-         title,
          level,
          type,
-         limit,
-         offset,
+         limit: Math.min(limitNumber, DEFAULTS.MAX_LIMIT_PAGINATION),
+         offset: offsetNumber,
          technology,
       });
 
       return res.json({
          data,
          total,
-         limit: limitNumber,
-         offset: offsetNumber,
+         limit: responseLimit,
+         offset: responseOffset,
       });
    }
 
@@ -51,6 +63,12 @@ export class JobController {
    static async create(req, res) {
       const { title, company, location, data } = req.body;
 
+      if (!title || !company || !data) {
+         return res
+            .status(400)
+            .json({ message: "title, company and data are required" });
+      }
+
       const newJob = await JobModel.create({
          title,
          company,
@@ -67,6 +85,12 @@ export class JobController {
 
       // Extraemos los datos del body enviado por el cliente
       const { title, company, location, data } = req.body;
+
+      if (!title || !company || !data) {
+         return res
+            .status(400)
+            .json({ message: "title, company and data are required" });
+      }
 
       const updatedJob = await JobModel.update({
          id,
@@ -90,6 +114,15 @@ export class JobController {
       // Extraemos los datos del body enviado por el cliente
       const { title, company, location, data } = req.body;
 
+      if (
+         title === undefined &&
+         company === undefined &&
+         location === undefined &&
+         data === undefined
+      ) {
+         return res.status(400).json({ message: "nothing to update" });
+      }
+
       const updatedJob = await JobModel.partialUpdate({
          id,
          title,
@@ -103,5 +136,17 @@ export class JobController {
       }
 
       return res.json(updatedJob);
+   }
+
+   static async delete(req, res) {
+      const { id } = req.params;
+
+      const deleted = await JobModel.delete(id);
+
+      if (!deleted) {
+         return res.status(404).json({ message: "Job not found" });
+      }
+
+      return res.status(204).end();
    }
 }
