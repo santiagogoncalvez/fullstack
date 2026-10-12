@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router"
 import { Building2, Heart, MapPin, Signal } from "lucide-react"
 import { JobDetailSkeleton } from "../components/JobDetailSkeleton"
 import { formatJobLevel } from "../constants/levels.js"
+import { API_URL } from "../config.js"
 import { Link } from "../components/Link"
 import snarkdown from 'snarkdown'
 import styles from './Detail.module.css'
@@ -95,7 +96,7 @@ export default function JobDetail () {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    fetch(`http://localhost:3000/jobs/${jobId}`)
+    fetch(`${API_URL}/jobs/${jobId}`)
        .then((response) => {
           if (!response.ok) {
              navigate("/not-found");

@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-La app consume la API en `http://localhost:3000/jobs` (ver `Backend/NodeJs y express/express`).
+La app consume la API en `VITE_API_URL` (ver `.env.example`). Sin configurar nada usa `http://localhost:3000`.
 
 ## Rutas
 
