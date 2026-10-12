@@ -1,7 +1,7 @@
 .searchResults {
-  max-width: 70rem;
+  max-width: var(--page);
   margin: 0 auto;
-  padding: 1rem 1.25rem 2rem;
+  padding: 1rem var(--gutter) 2rem;
 }
 
 .searchResults h2 {

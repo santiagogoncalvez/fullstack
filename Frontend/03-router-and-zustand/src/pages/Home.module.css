@@ -1,7 +1,7 @@
 .section {
-  max-width: 70rem;
+  max-width: var(--page);
   margin: 0 auto;
-  padding: 3rem 1.25rem;
+  padding: 3rem var(--gutter);
 }
 
 .section h2 {

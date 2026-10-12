@@ -2,7 +2,7 @@
   padding-block: 2rem 3rem;
   max-width: 44rem;
   margin: 0 auto;
-  padding-inline: 1.25rem;
+  padding-inline: var(--gutter);
 }
 
 .loading,
