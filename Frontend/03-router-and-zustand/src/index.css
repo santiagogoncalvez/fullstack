@@ -390,7 +390,7 @@ footer {
 }
 
 .job-listing-card p {
-  margin-top: var(--space-2);
+  margin-top: var(--space-3);
   color: var(--text-2);
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -418,7 +418,7 @@ footer {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
-  margin-top: var(--space-2);
+  margin-top: var(--space-3);
   color: var(--text-2);
   font-size: var(--fs-small);
 }

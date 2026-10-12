@@ -39,7 +39,7 @@ Mapa de uso: textos sobre `bg`/`surface` · CTA sólido `accent` + `ink`, hover 
 
 Escala cerrada: `--space-1 0.25` · `--space-2 0.5` · `--space-3 0.75` · `--space-4 1` · `--space-5 1.5` · `--space-6 2.5` · `--space-7 4` (rem). Nada fuera de escala salvo tamaños fijos de componente (paddings internos de botón, alto de icon-button).
 
-Mapa: micro (meta, detalles) `space-1` · elementos chicos y filas de botones/links `space-2`/`space-3` · título→contenido `space-2`, título→bloque `space-3` · entre cards y bloques `space-4` · secciones de página `space-5`/`space-6` · aire de página especial (404) `space-7`.
+Mapa: micro (meta, detalles) `space-1` · elementos chicos y filas de botones/links `space-2`/`space-3` · título→contenido `space-2`, título→bloque `space-3` · en cards, entre grupos `space-3` · entre cards y bloques `space-4` · secciones de página `space-5`/`space-6` · aire de página especial (404) `space-7`.
 
 Layout: `--page 70rem` + `--gutter 1.25rem` compartidos por header, footer, home, search, resultados y detalle (todos con el mismo lateral). Perfil mantiene 44rem de lectura con el mismo gutter. Detalle: contenedor flex en columna con `gap space-5` y todo el aire en su `padding` — breadcrumb, header y secciones sin margins de flujo.
 
