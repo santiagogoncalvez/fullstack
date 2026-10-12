@@ -423,6 +423,21 @@ footer {
   color: var(--accent-ink);
 }
 
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+  color: var(--text-2);
+  font-size: var(--fs-small);
+}
+
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
 /* Prosa (detalle) */
 .prose {
   line-height: 1.75;

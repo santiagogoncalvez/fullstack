@@ -6,8 +6,8 @@
 }
 
 .title:hover {
-  color: var(--accent);
-  text-decoration: none;
+  color: var(--text);
+  text-decoration: underline;
 }
 
 /* La card entera es link: el título estira su área a toda la card.

@@ -1,4 +1,4 @@
-import { Heart } from "lucide-react";
+import { Briefcase, Building2, Heart, MapPin, Signal } from "lucide-react";
 import { Link } from "./Link";
 import styles from "./JobCard.module.css";
 import { useFavoritesStore } from "../store/favoritesStore";
@@ -35,13 +35,26 @@ export function JobCard({ job }) {
                   {job.title}
                </Link>
             </h3>
-            <small>
-               {job.company} · {job.location}
-            </small>
+            <div className="meta-row">
+               <span className="meta-item">
+                  <Building2 size={14} aria-hidden="true" />
+                  {job.company}
+               </span>
+               <span className="meta-item">
+                  <MapPin size={14} aria-hidden="true" />
+                  {job.location}
+               </span>
+               <span className="meta-item">
+                  <Briefcase size={14} aria-hidden="true" />
+                  {job.data.mode}
+               </span>
+               <span className="meta-item">
+                  <Signal size={14} aria-hidden="true" />
+                  {job.data.level}
+               </span>
+            </div>
             <p>{job.description}</p>
             <div className="badges">
-               <span className="badge badge-accent">{job.data.mode}</span>
-               <span className="badge">{job.data.level}</span>
                {techList(job).map((t) => (
                   <span key={t} className="badge">{t}</span>
                ))}
