@@ -29,7 +29,7 @@ Dark (default), negro verdoso + brasa:
 | `--green`  | `#3e7d5c` | estado aplicado                        |
 | `--danger` | `#e0705c` | errores                                |
 
-Light (misma familia, en claro): papel verdoso `bg #f3f6f0` · `soft #e4eae0` · `surface #fafcf7` (nunca blanco puro) · tinta verde `text #121a15` · `text2 #4f6156` · misma brasa `accent #b33a17` · `ink #fafcf7` · `green #20603f` · `danger #a8321f`. Sin sombras en ningún tema (`--card-shadow: none`).
+Light (misma familia, en claro): papel verdoso `bg #f3f6f0` · `soft #e4eae0` · `surface #fafcf7` (nunca blanco puro) · tinta verde `text #121a15` · `text2 #4f6156` · misma brasa `accent #b33a17` · `ink #fafcf7` · `green #20603f` · `danger #a8321f`. Sombra XS mínima en ambos temas (separación, no estilo).
 
 Contrastes verificados (mínimo 4.5): dark text 15.2/13.0 · text2 8.5/7.3 · accent 5.5/4.8 · ink/accent 5.6 · blanco/green 4.9 · danger 5.9. Light text 16.2/17.1 · text2 6.0/6.6 · accent 5.4/5.9 · ink/accent 5.7 · ink/green 7.2 · danger 6.1.
 
