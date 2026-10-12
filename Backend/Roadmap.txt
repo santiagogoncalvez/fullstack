@@ -1,0 +1,42 @@
+BACKEND — PRIMER CICLO
+│
+├─ ETAPA 1 — SQL + PostgreSQL
+│  ├─ PostgreSQL Tutorial oficial
+│  ├─ práctica de SQL
+│  └─ fundamentos de bases de datos
+│
+├─ ETAPA 2 — Node + Express + TypeScript
+│  ├─ Curso "De cero a Full Stack con JavaScript"
+│  ├─ práctica de APIs
+│  └─ documentación oficial de Express 5
+│
+├─ ETAPA 3 — KIO: Backend inicial
+│  ├─ modelado PostgreSQL
+│  ├─ REST
+│  ├─ CRUD
+│  ├─ Node + Express
+│  ├─ PostgreSQL
+│  ├─ validación
+│  ├─ errores
+│  ├─ auth
+│  ├─ autorización
+│  ├─ relaciones
+│  ├─ paginación / filtros
+│  └─ transacciones
+│
+├─ ETAPA 4 — Profundización con libros
+│  ├─ PostgreSQL: Up and Running
+│  ├─ Web Development with Node and Express
+│  └─ aplicar lo aprendido en KIO
+│
+├─ ETAPA 5 — Arquitectura + calidad
+│  ├─ Node.js Design Patterns
+│  ├─ testing
+│  ├─ Docker
+│  ├─ migrations
+│  ├─ logging
+│  ├─ health checks
+│  └─ deploy
+│
+└─ ETAPA 6 — ORM
+   └─ Drizzle / Prisma
