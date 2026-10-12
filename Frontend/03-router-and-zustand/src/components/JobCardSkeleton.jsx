@@ -15,8 +15,10 @@ export function JobCardSkeleton() {
             <div className="badges">
                <Skeleton style={{ width: "4.5rem", height: "1.5rem", borderRadius: "var(--r-full)" }} />
                <Skeleton style={{ width: "3.5rem", height: "1.5rem", borderRadius: "var(--r-full)" }} />
+               <Skeleton style={{ width: "5rem", height: "1.5rem", borderRadius: "var(--r-full)" }} />
             </div>
          </div>
+         <Skeleton style={{ width: "2.5rem", height: "2.5rem", borderRadius: "var(--r-full)", flexShrink: 0 }} />
       </div>
    );
 }
