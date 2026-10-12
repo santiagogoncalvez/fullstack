@@ -1,4 +1,5 @@
 import { JobModel } from "../models/jobs.js";
+import { DEFAULTS } from "../config.js";
 
 export class JobController {
    static async getAll(req, res) {
@@ -75,6 +76,10 @@ export class JobController {
          data,
       });
 
+      if (!updatedJob) {
+         return res.status(404).json({ message: "Job not found" });
+      }
+
       return res.json(updatedJob);
    }
 
@@ -92,6 +97,10 @@ export class JobController {
          location,
          data,
       });
+
+      if (!updatedJob) {
+         return res.status(404).json({ message: "Job not found" });
+      }
 
       return res.json(updatedJob);
    }

@@ -90,7 +90,7 @@ export class JobModel {
       const jobIndex = jobs.findIndex((job) => job.id === id);
 
       if (jobIndex === -1) {
-         return res.status(404).json({ message: "Job not found" });
+         return null;
       }
 
       // Creamos el objeto reemplazando el trabajo anterior
@@ -113,7 +113,7 @@ export class JobModel {
       const jobIndex = jobs.findIndex((job) => job.id === id);
 
       if (jobIndex === -1) {
-         return res.status(404).json({ message: "Job not found" });
+         return null;
       }
 
       // Obtenemos el trabajo actual
