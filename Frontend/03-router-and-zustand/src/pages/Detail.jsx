@@ -28,18 +28,16 @@ function JobSection ({ title, content }) {
 
 function DetailPageBreadCrumb ({ job }) {
   return (
-    <div className={styles.container}>
-      <nav className={styles.breadcrumb}>
-        <Link 
-          href="/search"
-          className={styles.breadcrumbButton}
-        >
-          Empleos
-        </Link>
-        <span className={styles.breadcrumbSeparator}>/</span>
-        <span className={styles.breadcrumbCurrent}>{job.title}</span>
-      </nav>
-    </div>
+    <nav className={styles.breadcrumb}>
+      <Link
+        href="/search"
+        className={styles.breadcrumbButton}
+      >
+        Empleos
+      </Link>
+      <span className={styles.breadcrumbSeparator}>/</span>
+      <span className={styles.breadcrumbCurrent}>{job.title}</span>
+    </nav>
   )
 }
 
