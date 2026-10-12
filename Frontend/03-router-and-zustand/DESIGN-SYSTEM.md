@@ -42,7 +42,7 @@ Escala cerrada: `--space-1 0.25` · `--space-2 0.5` · `--space-3 0.75` · `--sp
 
 Mapa: micro (meta, detalles) `space-1` · elementos chicos y filas de botones/links `space-2`/`space-3` · título→contenido `space-2`, título→bloque `space-3` · entre cards y bloques `space-4` · secciones de página `space-5`/`space-6` · aire de página especial (404) `space-7`.
 
-Layout: `--page 70rem` + `--gutter 1.25rem` compartidos por header, footer, home, search y resultados. Detalle y perfil usan el mismo gutter con 44rem de lectura. Breadcrumb del detalle: solo `margin-bottom`, sin top ni laterales propios.
+Layout: `--page 70rem` + `--gutter 1.25rem` compartidos por header, footer, home, search, resultados y detalle. Perfil mantiene 44rem de lectura con el mismo gutter. Breadcrumb del detalle: `padding-top space-6`, sin laterales, `margin-bottom space-5`.
 
 ## Componentes
 

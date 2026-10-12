@@ -29,7 +29,7 @@
   font-size: var(--fs-small);
   color: var(--text-2);
   margin: 0 0 var(--space-5);
-  padding: 0;
+  padding: var(--space-6) 0 0;
 }
 
 .breadcrumbButton {
