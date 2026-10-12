@@ -5,6 +5,7 @@ import { Header } from './components/Header.jsx'
 import { Footer } from './components/Footer.jsx'
 import { ProtectedRoute } from './components/ProtectedRoute.jsx'
 import { RouteFallback } from './components/RouteFallback.jsx'
+import { ScrollToTop } from './components/ScrollToTop.jsx'
 
 const HomePage = lazy(() => import('./pages/Home.jsx'))
 const SearchPage = lazy(() => import('./pages/Search.jsx'))
@@ -17,6 +18,7 @@ const Register = lazy(() => import('./pages/Register.jsx'))
 function App() {
   return (
     <>
+      <ScrollToTop />
       <Header />
 
       <Suspense fallback={<RouteFallback />}>
