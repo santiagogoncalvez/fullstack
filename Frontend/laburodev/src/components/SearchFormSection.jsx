@@ -92,7 +92,7 @@ export function SearchFormSection ({ initialFilters, onTextFilter, onSearch, ini
         <h1>Encuentra tu próximo trabajo</h1>
         <p>Explora miles de oportunidades en el sector tecnológico.</p>
 
-        <form onChange={handleSubmit} id="empleos-search-form" role="search">
+        <form onChange={handleSubmit} onSubmit={(event) => event.preventDefault()} id="empleos-search-form" role="search">
            <div className="search-bar">
               <Search size={20} />
 
