@@ -1,7 +1,9 @@
 export function Footer () {
   return (
     <footer>
-      <small>&copy; 2025 LaburoDev. Todos los derechos reservados.</small>
+      <div className="footer-inner">
+        <small>&copy; 2025 laburoDev. Todos los derechos reservados.</small>
+      </div>
     </footer>
   )
 }

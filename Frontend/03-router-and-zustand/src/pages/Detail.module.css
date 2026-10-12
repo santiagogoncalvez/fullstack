@@ -17,6 +17,7 @@
 
 .errorTitle {
   font-size: var(--fs-h2);
+  font-weight: 500;
   margin-bottom: 1rem;
 }
 
@@ -59,7 +60,7 @@
 
 .title {
   font-size: var(--fs-h1);
-  font-weight: 800;
+  font-weight: 500;
   margin-bottom: 0.5rem;
 }
 
@@ -84,6 +85,7 @@
 
 .sectionTitle {
   font-size: var(--fs-h3);
+  font-weight: 500;
   margin-bottom: 0.75rem;
 }
 

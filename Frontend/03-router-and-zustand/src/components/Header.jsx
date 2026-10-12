@@ -12,29 +12,30 @@ export function Header () {
 
   return (
     <header>
-      <Link href='/' className="brand">
-        <span className="brand-mark" aria-hidden="true">L</span>
-        LaburoDev
-      </Link>
+      <div className="header-inner">
+        <Link href='/' className="brand">
+          laburo<span className="brand-dev">Dev</span>
+        </Link>
 
-      <nav>
-        <NavLink
-          className={({ isActive }) => isActive ? 'nav-link-active' : ''}
-          to="/search">Empleos</NavLink>
-          {
-            isLoggedIn && (
-              <NavLink
-                className={({ isActive }) => isActive ? 'nav-link-active' : ''}
-                to="/profile">
-                  Perfil {numberOfFavorites > 0 && `(${numberOfFavorites})`}
-              </NavLink>
-            )
-          }
-      </nav>
+        <nav>
+          <NavLink
+            className={({ isActive }) => isActive ? 'nav-link-active' : ''}
+            to="/search">Empleos</NavLink>
+            {
+              isLoggedIn && (
+                <NavLink
+                  className={({ isActive }) => isActive ? 'nav-link-active' : ''}
+                  to="/profile">
+                    Perfil {numberOfFavorites > 0 && `(${numberOfFavorites})`}
+                </NavLink>
+              )
+            }
+        </nav>
 
-      <div className="header-actions">
-        <ThemeToggle />
-        <HeaderUserButton />
+        <div className="header-actions">
+          <ThemeToggle />
+          <HeaderUserButton />
+        </div>
       </div>
 
     </header>

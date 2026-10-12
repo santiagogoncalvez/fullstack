@@ -1,6 +1,6 @@
 .container {
   background-color: var(--surface);
-  border: 1px solid var(--border);
+  box-shadow: var(--card-shadow);
   border-radius: var(--r-lg);
   padding: 2rem;
   max-width: 44rem;
@@ -9,7 +9,6 @@
 
 .header {
   padding-bottom: 1.75rem;
-  border-bottom: 1px solid var(--border);
   margin-bottom: 1.75rem;
   display: flex;
   align-items: center;
@@ -35,6 +34,7 @@
 
 .name {
   font-size: var(--fs-h2);
+  font-weight: 500;
 }
 
 .email {
@@ -48,6 +48,7 @@
 
 .sectionTitle {
   font-size: var(--fs-h3);
+  font-weight: 500;
   margin-bottom: 0.9rem;
 }
 
@@ -74,19 +75,15 @@
 
 .experienceItem {
   margin-bottom: 1.25rem;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid var(--border);
 }
 
 .experienceItem:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
   margin-bottom: 0;
 }
 
 .experienceTitle {
   font-size: var(--fs-body);
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .experienceCompany {
@@ -112,8 +109,6 @@
   display: flex;
   gap: 0.75rem;
   margin-top: 1.75rem;
-  padding-top: 1.75rem;
-  border-top: 1px solid var(--border);
 }
 
 .editButton {

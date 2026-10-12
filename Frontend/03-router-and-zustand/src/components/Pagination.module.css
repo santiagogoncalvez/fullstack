@@ -15,14 +15,14 @@
   padding-inline: 0.5rem;
   text-decoration: none;
   color: var(--text-2);
-  border: 1px solid transparent;
-  border-radius: var(--r-md);
-  font-weight: 600;
+  font-weight: 500;
+  border-radius: var(--r-full);
 }
 
 .pagination a:hover {
-  border-color: var(--border);
+  background-color: var(--bg-soft);
   color: var(--text);
+  text-decoration: none;
 }
 
 .isActive {

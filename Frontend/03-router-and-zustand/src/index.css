@@ -8,33 +8,31 @@
 [data-theme="dark"] {
   color-scheme: dark;
   --bg: #161209;
-  --bg-soft: #1e1810;
-  --surface: #241d12;
-  --border: #3b3226;
+  --bg-soft: #201a10;
+  --surface: #262014;
   --text: #f4eee1;
   --text-2: #cbbfa8;
   --accent: #e5a83b;
   --accent-ink: #1a1408;
-  --accent-soft: rgba(229, 168, 59, 0.14);
-  --green: #6fa287;
+  --accent-soft: rgba(229, 168, 59, 0.16);
+  --green: #2e6b4e;
   --danger: #d96a5b;
-  --shadow: rgba(0, 0, 0, 0.35);
+  --card-shadow: none;
 }
 
 [data-theme="light"] {
   color-scheme: light;
   --bg: #faf6ee;
-  --bg-soft: #f2ecdf;
+  --bg-soft: #efe8d8;
   --surface: #ffffff;
-  --border: #e0d5bf;
   --text: #211b12;
   --text-2: #6e6455;
-  --accent: #a05d08;
+  --accent: #8a5206;
   --accent-ink: #ffffff;
-  --accent-soft: rgba(160, 93, 8, 0.12);
+  --accent-soft: rgba(138, 82, 6, 0.1);
   --green: #1e5c40;
   --danger: #b23a2c;
-  --shadow: rgba(60, 45, 20, 0.12);
+  --card-shadow: 0 1px 3px rgba(60, 45, 20, 0.14);
 }
 
 :root {
@@ -53,6 +51,7 @@
 
 body {
   font-family: var(--font);
+  font-weight: 400;
   background-color: var(--bg);
   color: var(--text);
   min-height: 100vh;
@@ -74,13 +73,19 @@ main {
 }
 
 h1, h2, h3 {
-  line-height: 1.2;
+  line-height: 1.25;
   text-wrap: balance;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 a {
   color: var(--accent);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 small {
@@ -93,7 +98,7 @@ small {
   color: var(--accent-ink);
 }
 
-/* Botones: set acotado */
+/* Botones: un solo patrón */
 button {
   font-family: inherit;
   cursor: pointer;
@@ -107,15 +112,16 @@ button {
   padding: 0.7rem 1.4rem;
   border-radius: var(--r-full);
   font-size: var(--fs-body);
-  font-weight: 600;
-  border: 1px solid transparent;
+  font-weight: 500;
+  border: none;
   transition: filter 0.15s;
   white-space: nowrap;
   text-decoration: none;
 }
 
 .btn:hover {
-  filter: brightness(1.08);
+  filter: brightness(1.07);
+  text-decoration: none;
 }
 
 .btn:disabled {
@@ -129,8 +135,7 @@ button {
 }
 
 .btn-ghost {
-  background-color: transparent;
-  border-color: var(--border);
+  background-color: var(--bg-soft);
   color: var(--text);
 }
 
@@ -145,11 +150,16 @@ button {
   justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: var(--r-md);
-  background-color: transparent;
-  border: 1px solid var(--border);
+  border-radius: var(--r-full);
+  background-color: var(--bg-soft);
+  border: none;
   color: var(--text);
   font-size: 1rem;
+  transition: filter 0.15s;
+}
+
+.icon-btn:hover {
+  filter: brightness(1.12);
 }
 
 .icon-btn:disabled {
@@ -168,21 +178,27 @@ button {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: var(--r-full);
-  background-color: transparent;
-  border: 1px solid var(--border);
+  background-color: var(--bg-soft);
+  border: none;
   color: var(--text);
+  transition: filter 0.15s;
 }
 
-/* Formularios */
+.theme-toggle:hover {
+  filter: brightness(1.12);
+}
+
+/* Formularios: sólidos sutiles, sin bordes */
 input[type="text"],
 input[type="search"],
 input[type="email"],
 input[type="password"] {
   font-family: inherit;
+  font-weight: 400;
   font-size: var(--fs-body);
   color: var(--text);
-  background-color: var(--surface);
-  border: 1px solid var(--border);
+  background-color: var(--bg-soft);
+  border: none;
   border-radius: var(--r-full);
   padding: 0.7rem 1.2rem;
   outline: none;
@@ -193,28 +209,20 @@ input::placeholder {
   color: var(--text-2);
 }
 
-input:focus {
-  border-color: var(--accent);
-}
-
 select {
   font-family: inherit;
+  font-weight: 500;
   font-size: var(--fs-small);
   color: var(--text);
-  background-color: var(--surface);
-  border: 1px solid var(--border);
+  background-color: var(--bg-soft);
+  border: none;
   border-radius: var(--r-full);
   padding: 0.6rem 2.4rem 0.6rem 1.1rem;
   cursor: pointer;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23cbbfa8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23a39e93' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.9rem center;
-}
-
-select:focus {
-  border-color: var(--accent);
-  outline: none;
 }
 
 label {
@@ -223,14 +231,18 @@ label {
   font-weight: 500;
 }
 
-/* Header */
+/* Header: mismo ancho que el main */
 #root > header {
   position: sticky;
   top: 0;
   z-index: 10;
   background-color: var(--bg);
-  border-bottom: 1px solid var(--border);
-  padding: 0.75rem 1.25rem;
+  padding: 0.9rem 1.25rem;
+}
+
+.header-inner {
+  max-width: 70rem;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -240,41 +252,35 @@ label {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
   text-decoration: none;
   color: var(--text);
-  font-size: 1.25rem;
-  font-weight: 800;
-  letter-spacing: 0;
+  font-size: 1.3rem;
+  font-weight: 500;
 }
 
-.brand-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: var(--r-sm);
-  background-color: var(--accent);
-  color: var(--accent-ink);
-  font-weight: 800;
-  font-size: 1.1rem;
+.brand:hover {
+  text-decoration: none;
+}
+
+.brand-dev {
+  color: var(--accent);
 }
 
 nav {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.1rem;
 }
 
 nav a {
   text-decoration: none;
   color: var(--text-2);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 nav a:hover {
   color: var(--text);
+  text-decoration: none;
 }
 
 .nav-link-active {
@@ -287,14 +293,15 @@ nav a:hover {
   gap: 0.6rem;
 }
 
-/* Footer */
+/* Footer: mismo ancho, centrado */
 footer {
-  border-top: 1px solid var(--border);
-  padding: 1.25rem;
-  text-align: left;
+  padding: 2rem 1.25rem;
+}
+
+.footer-inner {
   max-width: 70rem;
   margin: 0 auto;
-  width: 100%;
+  text-align: center;
 }
 
 /* Buscador */
@@ -306,7 +313,7 @@ footer {
 
 .jobs-search h1 {
   font-size: var(--fs-display);
-  font-weight: 800;
+  font-weight: 500;
   margin-bottom: 0.5rem;
 }
 
@@ -321,7 +328,7 @@ footer {
   align-items: center;
   gap: 0.5rem;
   background-color: var(--surface);
-  border: 1px solid var(--border);
+  box-shadow: var(--card-shadow);
   border-radius: var(--r-full);
   padding: 0.35rem 0.35rem 0.35rem 1rem;
 }
@@ -332,13 +339,8 @@ footer {
 }
 
 .search-bar input {
-  border: none;
   background: transparent;
   padding: 0.6rem 0.25rem;
-}
-
-.search-bar input:focus {
-  border: none;
 }
 
 .search-filters {
@@ -348,7 +350,7 @@ footer {
   margin-top: 0.9rem;
 }
 
-/* Listado */
+/* Listado: fondo sólido sutil, sin líneas */
 .jobs-listings {
   display: flex;
   flex-direction: column;
@@ -357,7 +359,7 @@ footer {
 
 .job-listing-card {
   background-color: var(--surface);
-  border: 1px solid var(--border);
+  box-shadow: var(--card-shadow);
   border-radius: var(--r-lg);
   padding: 1.4rem;
   display: flex;
@@ -389,17 +391,16 @@ footer {
 
 .badge {
   font-size: var(--fs-small);
-  padding: 0.2rem 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.8rem;
   border-radius: var(--r-full);
-  border: 1px solid var(--border);
+  background-color: var(--bg-soft);
   color: var(--text-2);
 }
 
 .badge-accent {
   background-color: var(--accent-soft);
-  border-color: transparent;
   color: var(--accent);
-  font-weight: 600;
 }
 
 .button-apply-job.is-applied {
@@ -438,7 +439,7 @@ footer {
 }
 
 .prose strong {
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text);
 }
 
@@ -448,7 +449,6 @@ footer {
 
 .prose code {
   background-color: var(--bg-soft);
-  border: 1px solid var(--border);
   padding: 0.15rem 0.4rem;
   border-radius: var(--r-sm);
   font-size: 0.875em;

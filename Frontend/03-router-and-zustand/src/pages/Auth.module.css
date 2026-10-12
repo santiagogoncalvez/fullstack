@@ -8,7 +8,7 @@
 
 .card {
   background-color: var(--surface);
-  border: 1px solid var(--border);
+  box-shadow: var(--card-shadow);
   border-radius: var(--r-lg);
   padding: 2.25rem;
   width: 100%;
@@ -17,6 +17,7 @@
 
 .title {
   font-size: var(--fs-h1);
+  font-weight: 500;
   margin-bottom: 0.4rem;
 }
 
@@ -63,7 +64,7 @@
 .link {
   color: var(--accent);
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .link:hover {

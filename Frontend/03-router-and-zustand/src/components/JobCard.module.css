@@ -2,11 +2,12 @@
   text-decoration: none;
   color: var(--text);
   font-size: var(--fs-h3);
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .title:hover {
   color: var(--accent);
+  text-decoration: none;
 }
 
 .actions {
@@ -23,7 +24,7 @@
   border: none;
   cursor: pointer;
   font-size: var(--fs-small);
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none;
   text-align: center;
   font-family: inherit;
