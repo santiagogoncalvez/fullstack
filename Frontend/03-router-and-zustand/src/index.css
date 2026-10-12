@@ -418,11 +418,6 @@ footer {
   color: var(--text-2);
 }
 
-.badge-accent {
-  background-color: var(--accent);
-  color: var(--accent-ink);
-}
-
 .meta-row {
   display: flex;
   flex-wrap: wrap;
@@ -436,6 +431,12 @@ footer {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
+  line-height: 1;
+}
+
+.meta-item svg {
+  flex-shrink: 0;
+  display: block;
 }
 
 /* Prosa (detalle) */

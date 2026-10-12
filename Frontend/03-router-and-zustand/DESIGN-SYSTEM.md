@@ -25,7 +25,7 @@ Dark (default) — negro verdoso + brasa:
 | `--surface`| `#1a231d` | cards, search-bar                      |
 | `--text`   | `#ece7d8` | texto principal, íconos (`currentColor`)|
 | `--text-2` | `#a9b29b` | secundario, placeholders               |
-| `--accent` | `#ea5f31` | CTA, links, nav activa, badge de mode  |
+| `--accent` | `#ea5f31` | CTA, links, nav activa, marca Dev       |
 | `--accent-ink` | `#160d08` | texto sobre CTA                    |
 | `--green`  | `#3e7d5c` | estado aplicado                        |
 | `--danger` | `#e0705c` | errores                                |
@@ -34,7 +34,7 @@ Light (opuesto real, papel): `bg #fbfaf5` · `soft #f0e9dc` · `surface #ffffff`
 
 Contrastes verificados (mínimo 4.5): dark text 15.2/13.0 · text2 8.5/7.3 · accent 5.5/4.8 · ink/accent 5.6 · blanco/green 4.9 · danger 5.9. Light text 17.0/17.8 · text2 6.2/6.5 · accent 5.6/5.9 · blanco/accent 5.9 · blanco/green 7.4 · danger 6.4.
 
-Mapa de uso: textos sobre `bg`/`surface` · CTA sólido `accent` + `ink`, hover solo brillo · links `accent` con subrayado solo en hover · badge de mode único acento sólido, demás badges `bg-soft` + `text2` · foco visible anillo `accent` en todo.
+Mapa de uso: textos sobre `bg`/`surface` · CTA sólido `accent` + `ink`, hover solo brillo · links `accent` con subrayado solo en hover · pills solo tecnologías (`bg-soft` + `text2`) · foco visible anillo `accent` en todo.
 
 ## Espaciado
 

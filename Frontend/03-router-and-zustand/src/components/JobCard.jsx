@@ -1,4 +1,4 @@
-import { Briefcase, Building2, Heart, MapPin, Signal } from "lucide-react";
+import { Building2, Heart, MapPin, Signal } from "lucide-react";
 import { Link } from "./Link";
 import styles from "./JobCard.module.css";
 import { useFavoritesStore } from "../store/favoritesStore";
@@ -43,10 +43,6 @@ export function JobCard({ job }) {
                <span className="meta-item">
                   <MapPin size={14} aria-hidden="true" />
                   {job.location}
-               </span>
-               <span className="meta-item">
-                  <Briefcase size={14} aria-hidden="true" />
-                  {job.data.mode}
                </span>
                <span className="meta-item">
                   <Signal size={14} aria-hidden="true" />
