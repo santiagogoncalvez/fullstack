@@ -796,5 +796,503 @@
       "requirements": "- Excelentes habilidades de escritura técnica en español e inglés.\n- Experiencia creando documentación de software o APIs.\n- Conocimiento de Markdown y formatos de documentación.\n- Familiaridad con Git y workflows de documentación.\n- Background técnico o conocimientos de programación es un plus.\n- Capacidad para aprender rápidamente conceptos técnicos.\n- Atención al detalle y enfoque en la experiencia del usuario.",
       "about": "DocuTech Solutions es una empresa especializada en documentación técnica que ayuda a empresas de tecnología a crear contenido de calidad. Ofrecemos trabajo remoto y oportunidades de desarrollar habilidades en escritura técnica y tecnologías modernas."
     }
+  },
+  {
+    "id": "eca7dae1-bf6b-4d1f-bf91-78047da1a0ba",
+    "title": "Desarrollador Frontend React",
+    "company": "Nubatech",
+    "location": "Remoto",
+    "description": "Buscamos frontend con 3 años en React para nuestro panel de pagos. Trabajo remoto con equipo en LATAM.",
+    "data": {
+      "technology": [
+        "react",
+        "javascript"
+      ],
+      "mode": "remoto",
+      "level": "mid-level"
+    },
+    "content": {
+      "description": "Nubatech es una fintech argentina de 60 personas, remota desde 2021. Buscamos frontend con 3 años en React para nuestro panel de pagos. Trabajo remoto con equipo en LATAM.",
+      "responsibilities": "- Desarrollar features del dashboard en React.\n- Colaborar con diseño en el sistema de componentes.\n- Optimizar tiempos de carga y Core Web Vitals.",
+      "requirements": "- 3+ años con React y TypeScript.\n- Experiencia con testing (Vitest o Jest).\n- Inglés para lectura técnica.",
+      "about": "Nubatech es una fintech argentina de 60 personas, remota desde 2021."
+    }
+  },
+  {
+    "id": "e84643e4-74f1-40e3-b3e1-3f4659438824",
+    "title": "Backend Developer Node.js",
+    "company": "Río Labs",
+    "location": "Buenos Aires",
+    "description": "Backend Node para APIs de logística con alto tráfico. Híbrido en Palermo.",
+    "data": {
+      "technology": [
+        "nodejs",
+        "javascript"
+      ],
+      "mode": "buenos-aires",
+      "level": "senior"
+    },
+    "content": {
+      "description": "Startup logística con respaldo de fondos regionales, 120 empleados. Backend Node para APIs de logística con alto tráfico. Híbrido en Palermo.",
+      "responsibilities": "- Diseñar endpoints REST usados por 200k repartidores.\n- Mejorar latencia p95 de la API.\n- Hacer code review y mentorear perfiles SSR.",
+      "requirements": "- 5+ años con Node.js y PostgreSQL.\n- Experiencia con colas (RabbitMQ o SQS).\n- Haber trabajado con tráfico alto.",
+      "about": "Startup logística con respaldo de fondos regionales, 120 empleados."
+    }
+  },
+  {
+    "id": "75585fb5-a1d6-4070-89f0-2feff324986c",
+    "title": "Data Analyst",
+    "company": "Pampa Digital",
+    "location": "Remoto",
+    "description": "Analista de datos para e-commerce: tableros, cohortes y experimentos A/B.",
+    "data": {
+      "technology": [
+        "python"
+      ],
+      "mode": "remoto",
+      "level": "mid-level"
+    },
+    "content": {
+      "description": "Agencia de e-commerce con equipo de datos de 8 personas. Analista de datos para e-commerce: tableros, cohortes y experimentos A/B.",
+      "responsibilities": "- Armar dashboards de adquisición y retención.\n- Analizar experimentos A/B.\n- Automatizar reportes semanales.",
+      "requirements": "- SQL avanzado y Python (pandas).\n- Experiencia con Metabase o Looker.\n- Criterio de negocio.",
+      "about": "Agencia de e-commerce con equipo de datos de 8 personas."
+    }
+  },
+  {
+    "id": "67bcd646-b5f1-43ce-a6a2-e2f1e6425c13",
+    "title": "Desarrollador Python Junior",
+    "company": "Andina Soft",
+    "location": "CDMX, México",
+    "description": "Puesto junior para sumarse al equipo de integraciones. Capacitación paga y mentor asignado.",
+    "data": {
+      "technology": [
+        "python"
+      ],
+      "mode": "cdmx",
+      "level": "junior"
+    },
+    "content": {
+      "description": "Software factory de 40 personas en CDMX. Puesto junior para sumarse al equipo de integraciones. Capacitación paga y mentor asignado.",
+      "responsibilities": "- Mantener conectores Python existentes.\n- Escribir tests de integraciones.\n- Documentar endpoints internos.",
+      "requirements": "- Python base sólido y ganas de aprender.\n- Git y nociones de APIs REST.\n- Disponibilidad presencial 3 días.",
+      "about": "Software factory de 40 personas en CDMX."
+    }
+  },
+  {
+    "id": "f6b0a30f-176f-4efa-bf10-73b67be1d09e",
+    "title": "DevOps Engineer",
+    "company": "NubeSur",
+    "location": "Remoto",
+    "description": "DevOps para plataforma multi-tenant en AWS: Terraform, EKS y observabilidad.",
+    "data": {
+      "technology": [
+        "python",
+        "nodejs"
+      ],
+      "mode": "remoto",
+      "level": "senior"
+    },
+    "content": {
+      "description": "Empresa de infraestructura con clientes en 6 países. DevOps para plataforma multi-tenant en AWS: Terraform, EKS y observabilidad.",
+      "responsibilities": "- Gestionar clusters EKS con Terraform.\n- Definir SLOs y alertas.\n- Automatizar deploys con GitHub Actions.",
+      "requirements": "- 4+ años en AWS y Kubernetes.\n- IaC con Terraform.\n- Guardia rotativa paga.",
+      "about": "Empresa de infraestructura con clientes en 6 países."
+    }
+  },
+  {
+    "id": "c819e26a-e7c0-4ff6-becb-3a0ae48160e2",
+    "title": "Desarrollador Mobile Flutter",
+    "company": "MateApp",
+    "location": "Guadalajara, México",
+    "description": "App de delivery con 1M de descargas busca dev Flutter para el equipo de pagos.",
+    "data": {
+      "technology": [
+        "java",
+        "javascript"
+      ],
+      "mode": "guadalajara",
+      "level": "mid-level"
+    },
+    "content": {
+      "description": "Scale-up mexicana de 200 personas. App de delivery con 1M de descargas busca dev Flutter para el equipo de pagos.",
+      "responsibilities": "- Desarrollar el flujo de pagos in-app.\n- Reducir crashes por debajo de 0.5%.\n- Publicar releases quincenales.",
+      "requirements": "- 2+ años con Flutter y Dart.\n- Integraciones con pasarelas de pago.\n- Inglés intermedio.",
+      "about": "Scale-up mexicana de 200 personas."
+    }
+  },
+  {
+    "id": "da0a12ca-14f9-4ba3-a879-fb8aaae66d7d",
+    "title": "QA Automation",
+    "company": "QualityLab",
+    "location": "Remoto",
+    "description": "QA automation para suite de 800 tests en Cypress y Playwright.",
+    "data": {
+      "technology": [
+        "javascript",
+        "python"
+      ],
+      "mode": "remoto",
+      "level": "mid-level"
+    },
+    "content": {
+      "description": "Consultora de QA con clientes en USA y LATAM. QA automation para suite de 800 tests en Cypress y Playwright.",
+      "responsibilities": "- Automatizar regresiones en Cypress.\n- Mantener pipelines de test en CI.\n- Reportar con evidencia reproducible.",
+      "requirements": "- 3+ años en automation JS o Python.\n- CI/CD y Git.\n- Atención al detalle.",
+      "about": "Consultora de QA con clientes en USA y LATAM."
+    }
+  },
+  {
+    "id": "3364dd19-c4b6-4576-bb4b-4703274aa305",
+    "title": "Machine Learning Engineer",
+    "company": "AgroIA",
+    "location": "Remoto",
+    "description": "Modelos de visión para estimación de rindes. Stack Python, PyTorch y datos satelitales.",
+    "data": {
+      "technology": [
+        "python"
+      ],
+      "mode": "remoto",
+      "level": "senior"
+    },
+    "content": {
+      "description": "Agtech con operaciones en Argentina y Brasil. Modelos de visión para estimación de rindes. Stack Python, PyTorch y datos satelitales.",
+      "responsibilities": "- Entrenar modelos de segmentación de cultivos.\n- Llevar modelos a producción.\n- Trabajar con ingenieros agrónomos.",
+      "requirements": "- 4+ años en ML aplicado, PyTorch.\n- MLOps básico (Docker, MLflow).\n- Portugués o inglés.",
+      "about": "Agtech con operaciones en Argentina y Brasil."
+    }
+  },
+  {
+    "id": "178ee812-69ef-4eb4-b770-747bd7217c4c",
+    "title": "Tech Lead Fullstack",
+    "company": "Fondo Capital",
+    "location": "Barcelona, España",
+    "description": "Liderar squad de 5 en plataforma de inversiones. Inglés diario.",
+    "data": {
+      "technology": [
+        "react",
+        "nodejs"
+      ],
+      "mode": "barcelona",
+      "level": "lead"
+    },
+    "content": {
+      "description": "Banco digital con 500 empleados en Europa. Liderar squad de 5 en plataforma de inversiones. Inglés diario.",
+      "responsibilities": "- Liderar técnicamente un squad.\n- Definir RFCs de arquitectura.\n- Alinear con producto y compliance.",
+      "requirements": "- 6+ años fullstack, 2 liderando.\n- Inglés C1.\n- Regulación financiera, un plus.",
+      "about": "Banco digital con 500 empleados en Europa."
+    }
+  },
+  {
+    "id": "3dce126f-9f09-4101-86e3-141f213f5549",
+    "title": "Desarrollador PHP Laravel",
+    "company": "TiendaNube Partners",
+    "location": "Monterrey, México",
+    "description": "E-commerce en Laravel: módulos de promociones y cupones.",
+    "data": {
+      "technology": [
+        "php",
+        "javascript"
+      ],
+      "mode": "monterrey",
+      "level": "mid-level"
+    },
+    "content": {
+      "description": "Agencia de 25 personas en Monterrey. E-commerce en Laravel: módulos de promociones y cupones.",
+      "responsibilities": "- Desarrollar módulos en Laravel.\n- Integrar pasarelas locales.\n- Soporte a tiendas en temporada alta.",
+      "requirements": "- 3+ años con Laravel y MySQL.\n- Blade y Livewire.\n- Disponibilidad en Buen Fin.",
+      "about": "Agencia de 25 personas en Monterrey."
+    }
+  },
+  {
+    "id": "8579a366-da8b-40f3-a90b-a0dafe01d2c2",
+    "title": "Frontend Junior",
+    "company": "Chacra Tech",
+    "location": "Remoto",
+    "description": "Primer empleo IT: maquetado y componentes con React, con revisión de código diaria.",
+    "data": {
+      "technology": [
+        "react",
+        "javascript"
+      ],
+      "mode": "remoto",
+      "level": "junior"
+    },
+    "content": {
+      "description": "Estudio boutique con programa junior pago. Primer empleo IT: maquetado y componentes con React, con revisión de código diaria.",
+      "responsibilities": "- Maquetar pantallas desde Figma.\n- Componentes accesibles.\n- Pair programming semanal.",
+      "requirements": "- HTML/CSS/JS sólidos.\n- Un proyecto propio para mostrar.\n- Muchas ganas de aprender.",
+      "about": "Estudio boutique con programa junior pago."
+    }
+  },
+  {
+    "id": "9de67cc6-c9c7-411d-97a2-7df8703d4a7d",
+    "title": "Data Engineer",
+    "company": "Minería Datos SA",
+    "location": "Remoto",
+    "description": "Pipelines batch y streaming para minería. Remoto con viajes a faena.",
+    "data": {
+      "technology": [
+        "python",
+        "java"
+      ],
+      "mode": "remoto",
+      "level": "senior"
+    },
+    "content": {
+      "description": "Consultora minera con 15 años. Pipelines batch y streaming para minería. Remoto con viajes a faena.",
+      "responsibilities": "- Pipelines Spark y Kafka.\n- Data quality y linaje.\n- Modelado dimensional.",
+      "requirements": "- 4+ años en data engineering.\n- Spark, Airflow, dbt.\n- Inglés técnico.",
+      "about": "Consultora minera con 15 años."
+    }
+  },
+  {
+    "id": "4bdbe95f-b009-4124-bc47-9735fb536b69",
+    "title": "Desarrollador Ruby on Rails",
+    "company": "OficinaVirtual",
+    "location": "Remoto",
+    "description": "SaaS de gestión documental en Rails 7. Equipo chico, decisiones rápidas.",
+    "data": {
+      "technology": [
+        "ruby",
+        "javascript"
+      ],
+      "mode": "remoto",
+      "level": "mid-level"
+    },
+    "content": {
+      "description": "Equipo de 9 personas, 100% remoto. SaaS de gestión documental en Rails 7. Equipo chico, decisiones rápidas.",
+      "responsibilities": "- Features end-to-end en Rails.\n- Hotwire en el frontend.\n- On-call liviano y pago.",
+      "requirements": "- 3+ años con Rails.\n- PostgreSQL.\n- Autonomía total.",
+      "about": "Equipo de 9 personas, 100% remoto."
+    }
+  },
+  {
+    "id": "47d7879c-2aff-4d32-87e4-fce835b4f2ec",
+    "title": "Security Engineer",
+    "company": "Banco del Litoral",
+    "location": "Buenos Aires",
+    "description": "AppSec para home banking: SAST, threat modeling y respuesta.",
+    "data": {
+      "technology": [
+        "python",
+        "java"
+      ],
+      "mode": "buenos-aires",
+      "level": "senior"
+    },
+    "content": {
+      "description": "Banca tradicional en transformación digital. AppSec para home banking: SAST, threat modeling y respuesta.",
+      "responsibilities": "- Threat modeling de nuevas features.\n- Gestionar hallazgos SAST/DAST.\n- Capacitar a devs en OWASP.",
+      "requirements": "- 4+ años en AppSec.\n- OWASP Top 10 en profundidad.\n- Certificaciones, un plus.",
+      "about": "Banca tradicional en transformación digital."
+    }
+  },
+  {
+    "id": "a5f4fe01-9ab9-4aaa-aefe-de16cb10ba24",
+    "title": "Desarrollador C# .NET",
+    "company": "SaludPlus",
+    "location": "CDMX, México",
+    "description": "Historia clínica electrónica en .NET 8. Impacto real en hospitales.",
+    "data": {
+      "technology": [
+        "csharp"
+      ],
+      "mode": "cdmx",
+      "level": "mid-level"
+    },
+    "content": {
+      "description": "Healthtech mexicana en crecimiento. Historia clínica electrónica en .NET 8. Impacto real en hospitales.",
+      "responsibilities": "- APIs en .NET 8.\n- Integración HL7/FHIR.\n- Migración de monolito a módulos.",
+      "requirements": "- 3+ años con C# y SQL Server.\n- Conocimiento de salud, un plus.\n- Presencial híbrido.",
+      "about": "Healthtech mexicana en crecimiento."
+    }
+  },
+  {
+    "id": "3279ffb1-2371-4965-af31-66e5298467ae",
+    "title": "Diseñador UI que programa",
+    "company": "Estudio Pampa",
+    "location": "Remoto",
+    "description": "Perfil híbrido: diseño en Figma y front en React para sitios institucionales.",
+    "data": {
+      "technology": [
+        "react",
+        "javascript"
+      ],
+      "mode": "remoto",
+      "level": "mid-level"
+    },
+    "content": {
+      "description": "Estudio de 12 personas, clientes regionales. Perfil híbrido: diseño en Figma y front en React para sitios institucionales.",
+      "responsibilities": "- Diseñar y maquetar sitios.\n- Design system en código.\n- Animaciones sutiles.",
+      "requirements": "- Portfolio con 3+ sitios.\n- React y CSS avanzado.\n- Buen gusto tipográfico.",
+      "about": "Estudio de 12 personas, clientes regionales."
+    }
+  },
+  {
+    "id": "bebaf27c-0cd6-49ba-b28a-eb55ccb6a7a8",
+    "title": "SRE",
+    "company": "PagosYa",
+    "location": "Remoto",
+    "description": "Confiabilidad de pagos: error budgets, incident review sin culpas.",
+    "data": {
+      "technology": [
+        "python",
+        "nodejs"
+      ],
+      "mode": "remoto",
+      "level": "senior"
+    },
+    "content": {
+      "description": "Fintech de pagos con operaciones 24/7. Confiabilidad de pagos: error budgets, incident review sin culpas.",
+      "responsibilities": "- Definir SLOs por servicio.\n- Automatizar respuesta a incidentes.\n- Chaos engineering trimestral.",
+      "requirements": "- 4+ años en SRE o plataforma.\n- GCP o AWS.\n- Calma bajo presión.",
+      "about": "Fintech de pagos con operaciones 24/7."
+    }
+  },
+  {
+    "id": "af8fbdc1-216a-4412-9c20-0156b256bd77",
+    "title": "Desarrollador WordPress",
+    "company": "Medios del Sur",
+    "location": "Remoto",
+    "description": "Portales de noticias en WordPress VIP: performance y Gutenberg.",
+    "data": {
+      "technology": [
+        "php",
+        "javascript"
+      ],
+      "mode": "remoto",
+      "level": "mid-level"
+    },
+    "content": {
+      "description": "Medios digitales en expansión. Portales de noticias en WordPress VIP: performance y Gutenberg.",
+      "responsibilities": "- Bloques Gutenberg a medida.\n- Performance (LCP < 2s).\n- Multisitio.",
+      "requirements": "- WordPress avanzado y PHP.\n- Caché y CDN.\n- Ritmo de redacción.",
+      "about": "Medios digitales en expansión."
+    }
+  },
+  {
+    "id": "363b9d1a-04ac-457e-bd19-3e03d0004d19",
+    "title": "Ingeniero de Datos Junior",
+    "company": "Verde Energía",
+    "location": "Guadalajara, México",
+    "description": "Datos de generación solar: ingesta y tableros.",
+    "data": {
+      "technology": [
+        "python"
+      ],
+      "mode": "guadalajara",
+      "level": "junior"
+    },
+    "content": {
+      "description": "Energía renovable con 10 parques. Datos de generación solar: ingesta y tableros.",
+      "responsibilities": "- Ingesta de telemetría.\n- Tableros de generación.\n- Limpieza de datos.",
+      "requirements": "- Python y SQL base.\n- Curiosidad por energía.\n- Inglés lectura.",
+      "about": "Energía renovable con 10 parques."
+    }
+  },
+  {
+    "id": "06e60e50-ab3a-443a-b49b-3dea8ac48f63",
+    "title": "CTO",
+    "company": "Semilla Startup",
+    "location": "Remoto",
+    "description": "Primer hire técnico: definir stack y contratar. Equity importante.",
+    "data": {
+      "technology": [
+        "react",
+        "nodejs",
+        "python"
+      ],
+      "mode": "remoto",
+      "level": "lead"
+    },
+    "content": {
+      "description": "Fundadores con exit previo, remoto total. Primer hire técnico: definir stack y contratar. Equity importante.",
+      "responsibilities": "- Elegir stack y arquitectura.\n- Codear el 70% del tiempo.\n- Contratar los primeros 3 devs.",
+      "requirements": "- Haber construido y escalado algo.\n- Producto y negocio.\n- Tolerancia al caos.",
+      "about": "Fundadores con exit previo, remoto total."
+    }
+  },
+  {
+    "id": "98cd0e63-8835-42d5-80be-a4925d4db6cd",
+    "title": "Desarrollador Java Spring",
+    "company": "Aseguradora Andina",
+    "location": "Barcelona, España",
+    "description": "Microservicios Spring para pólizas. Español e inglés.",
+    "data": {
+      "technology": [
+        "java"
+      ],
+      "mode": "barcelona",
+      "level": "senior"
+    },
+    "content": {
+      "description": "Aseguradora digital con hub en Barcelona. Microservicios Spring para pólizas. Español e inglés.",
+      "responsibilities": "- Microservicios Spring Boot.\n- Eventos con Kafka.\n- Cobertura de tests alta.",
+      "requirements": "- 5+ años con Java 17+.\n- Kafka y Docker.\n- Inglés B2.",
+      "about": "Aseguradora digital con hub en Barcelona."
+    }
+  },
+  {
+    "id": "402aa0c9-d499-4334-a467-8622f503c41c",
+    "title": "Soporte Técnico N2",
+    "company": "Redes del Norte",
+    "location": "Monterrey, México",
+    "description": "Soporte a ISPs: routing, BGP y fibra.",
+    "data": {
+      "technology": [
+        "python"
+      ],
+      "mode": "monterrey",
+      "level": "junior"
+    },
+    "content": {
+      "description": "Telecom con 20 años en el norte. Soporte a ISPs: routing, BGP y fibra.",
+      "responsibilities": "- Diagnosticar fallas de red.\n- Configurar equipos.\n- Guardias rotativas.",
+      "requirements": "- Redes TCP/IP y CCNA en curso.\n- Linux base.\n- Auto propio.",
+      "about": "Telecom con 20 años en el norte."
+    }
+  },
+  {
+    "id": "6e46f86c-8508-4c7f-bd63-61873f5c5b58",
+    "title": "Product Engineer",
+    "company": "TurnosWeb",
+    "location": "Remoto",
+    "description": "Fullstack con mentalidad de producto: discovery y delivery.",
+    "data": {
+      "technology": [
+        "react",
+        "nodejs"
+      ],
+      "mode": "remoto",
+      "level": "mid-level"
+    },
+    "content": {
+      "description": "SaaS bootstrapped, equipo de 15. Fullstack con mentalidad de producto: discovery y delivery.",
+      "responsibilities": "- Hablar con usuarios cada semana.\n- Shippear semanalmente.\n- Métricas de activación.",
+      "requirements": "- Fullstack JS con criterio.\n- Experimentación.\n- Español neutro.",
+      "about": "SaaS bootstrapped, equipo de 15."
+    }
+  },
+  {
+    "id": "db80f012-82d3-4ff8-be7a-2db5cc7a6ca7",
+    "title": "Desarrollador C++ Embebidos",
+    "company": "SatCom",
+    "location": "Buenos Aires",
+    "description": "Firmware para estaciones terrenas satelitales.",
+    "data": {
+      "technology": [
+        "c",
+        "c++"
+      ],
+      "mode": "buenos-aires",
+      "level": "senior"
+    },
+    "content": {
+      "description": "Empresa espacial argentina en crecimiento. Firmware para estaciones terrenas satelitales.",
+      "responsibilities": "- Firmware C++17 en ARM.\n- Drivers y DSP básico.\n- Testing en hardware.",
+      "requirements": "- 5+ años en embebidos.\n- Inglés fluido.\n- Presencial en Barracas.",
+      "about": "Empresa espacial argentina en crecimiento."
+    }
   }
 ]
