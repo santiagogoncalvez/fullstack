@@ -18,7 +18,7 @@ Hecho hasta ahora:
 - `Backend/NodeJs y express/fundamentos-nodejs/` — servidor con `node:http`, rutas `/users` y `/health`, query params `limit/offset`, `POST /users`, `.env` con `PORT`.
 - `Backend/NodeJs y express/express/` — API REST de empleos `/jobs` con Express 5: `GET /jobs` con filtros (`text, title, level, type, technology`) + paginación (`limit/offset`), `GET /jobs/:id`, `POST /`, `PUT /:id`, `PATCH /:id`. Arquitectura `routes / controllers / models`, CORS, `jobs.json` como persistencia temporal.
 - `Backend/PostreSQL/tutorial documentacion/` — inicio del tutorial oficial de PostgreSQL.
-- `Frontend/03-router-and-zustand/` — app de empleos en React + Vite: router propio + `react-router`, `zustand` para auth y favoritos, `Context` para auth/favs, búsqueda, paginación, login/register, rutas protegidas.
+- `Frontend/laburodev/` — app de empleos en React + Vite: router propio + `react-router`, `zustand` para auth y favoritos, `Context` para auth/favs, búsqueda, paginación, login/register, rutas protegidas.
 
 Ver detalle del plan completo en `Backend/Roadmap.txt`.
 
@@ -39,7 +39,7 @@ Backend/
   PostreSQL/              # práctica SQL
   Roadmap.txt             # plan completo 6 etapas
 Frontend/
-  03-router-and-zustand/  # app DevJobs
+  laburodev/  # app DevJobs
 ```
 
 ## 🚀 Cómo correr
@@ -56,7 +56,7 @@ cd "../fundamentos-nodejs"
 node server.js
 
 # Frontend
-cd "../../../Frontend/03-router-and-zustand"
+cd "../../../Frontend/laburodev"
 npm install
 npm run dev
 ```
