@@ -37,7 +37,7 @@ function DetailPageBreadCrumb ({ job }) {
           Empleos
         </Link>
         <span className={styles.breadcrumbSeparator}>/</span>
-        <span className={styles.breadcrumbCurrent}>{job.titulo}</span>
+        <span className={styles.breadcrumbCurrent}>{job.title}</span>
       </nav>
     </div>
   )
@@ -48,10 +48,10 @@ function DetailPageHeader ({ job }) {
     <>
       <header className={styles.header}>
         <h1 className={styles.title}>
-          {job.titulo}
+          {job.title}
         </h1>
         <p className={styles.meta}>
-          {job.empresa} · {job.ubicacion}
+          {job.company} · {job.location}
         </p>
       </header>
 

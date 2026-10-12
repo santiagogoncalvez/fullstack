@@ -51,20 +51,20 @@ export function JobCard({ job }) {
    return (
       <article
          className="job-listing-card"
-         data-modalidad={job.data.modalidad}
-         data-nivel={job.data.nivel}
+         data-mode={job.data.mode}
+         data-level={job.data.level}
          data-technology={job.data.technology}
       >
          <div>
             <h3>
                <Link className={styles.title} href={`/jobs/${job.id}`}>
-                  {job.titulo}
+                  {job.title}
                </Link>
             </h3>
             <small>
-               {job.empresa} | {job.ubicacion} | {job.data.nivel}
+               {job.company} | {job.location} | {job.data.level}
             </small>
-            <p>{job.descripcion}</p>
+            <p>{job.description}</p>
          </div>
          <div className={styles.actions}>
             <Link href={`/jobs/${job.id}`} className={styles.details}>

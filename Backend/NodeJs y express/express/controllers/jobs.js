@@ -48,12 +48,12 @@ export class JobController {
    }
 
    static async create(req, res) {
-      const { titulo, empresa, ubicacion, data } = req.body;
+      const { title, company, location, data } = req.body;
 
       const newJob = await JobModel.create({
-         titulo,
-         empresa,
-         ubicacion,
+         title,
+         company,
+         location,
          data,
       });
 
@@ -65,13 +65,13 @@ export class JobController {
       const { id } = req.params;
 
       // Extraemos los datos del body enviado por el cliente
-      const { titulo, empresa, ubicacion, data } = req.body;
+      const { title, company, location, data } = req.body;
 
       const updatedJob = await JobModel.update({
          id,
-         titulo,
-         empresa,
-         ubicacion,
+         title,
+         company,
+         location,
          data,
       });
 
@@ -83,13 +83,13 @@ export class JobController {
       const { id } = req.params;
 
       // Extraemos los datos del body enviado por el cliente
-      const { titulo, empresa, ubicacion, data } = req.body;
+      const { title, company, location, data } = req.body;
 
       const updatedJob = await JobModel.partialUpdate({
          id,
-         titulo,
-         empresa,
-         ubicacion,
+         title,
+         company,
+         location,
          data,
       });
 

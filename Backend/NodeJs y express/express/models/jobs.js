@@ -17,14 +17,14 @@ export class JobModel {
 
          filteredJobs = filteredJobs.filter(
             (job) =>
-               job.titulo.toLowerCase().includes(searchTerm) ||
-               (job.descripcion?.toLowerCase().includes(searchTerm) ?? false),
+               job.title.toLowerCase().includes(searchTerm) ||
+               (job.description?.toLowerCase().includes(searchTerm) ?? false),
          );
       }
 
       if (type) {
          filteredJobs = filteredJobs.filter(
-            (job) => job.data.modalidad === type,
+            (job) => job.data.mode === type,
          );
       }
 
@@ -36,12 +36,12 @@ export class JobModel {
 
       if (title) {
          filteredJobs = filteredJobs.filter((job) =>
-            job.titulo.includes(title),
+            job.title.includes(title),
          );
       }
 
       if (level) {
-         filteredJobs = filteredJobs.filter((job) => job.data.nivel === level);
+         filteredJobs = filteredJobs.filter((job) => job.data.level === level);
       }
 
       const limitNumber = parseInt(limit, 10);
@@ -60,13 +60,13 @@ export class JobModel {
       };
    }
 
-   static async create({ titulo, empresa, ubicacion, data }) {
+   static async create({ title, company, location, data }) {
       const newJob = {
          // id es un campo obligatorio
          id: crypto.randomUUID(), // generamos un id aleatorio
-         titulo, // titulo es un campo obligatorio
-         empresa, // empresa es un campo obligatorio
-         ubicacion, // ubicacion es un campo opcional
+         title,
+         company,
+         location, // location es opcional
          data, // data es un campo obligatorio
       };
 
@@ -85,7 +85,7 @@ export class JobModel {
       return job;
    }
 
-   static async update({ id, titulo, empresa, ubicacion, data }) {
+   static async update({ id, title, company, location, data }) {
       // Buscamos el índice del trabajo en la lista
       const jobIndex = jobs.findIndex((job) => job.id === id);
 
@@ -96,9 +96,9 @@ export class JobModel {
       // Creamos el objeto reemplazando el trabajo anterior
       const updatedJob = {
          id, // Conservamos el id original
-         titulo,
-         empresa,
-         ubicacion,
+         title,
+         company,
+         location,
          data,
       };
 
@@ -108,7 +108,7 @@ export class JobModel {
       return updatedJob;
    }
 
-   static async partialUpdate({ id, titulo, empresa, ubicacion, data }) {
+   static async partialUpdate({ id, title, company, location, data }) {
       // Buscamos el trabajo por su id
       const jobIndex = jobs.findIndex((job) => job.id === id);
 
@@ -122,9 +122,9 @@ export class JobModel {
       // Creamos un objeto combinando los datos actuales con los nuevos
       const updatedJob = {
          ...currentJob,
-         ...(titulo !== undefined && { titulo }),
-         ...(empresa !== undefined && { empresa }),
-         ...(ubicacion !== undefined && { ubicacion }),
+         ...(title !== undefined && { title }),
+         ...(company !== undefined && { company }),
+         ...(location !== undefined && { location }),
          ...(data !== undefined && { data }),
       };
 
