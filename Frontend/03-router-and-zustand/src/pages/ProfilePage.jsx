@@ -6,7 +6,7 @@ export default function Profile() {
   const { logout } = useAuthStore()
 
   return (
-    <div style={{ maxWidth: '44rem', margin: '0 auto', padding: '2rem var(--gutter)' }}>
+    <div style={{ maxWidth: '44rem', margin: '0 auto', padding: 'var(--space-5) var(--gutter)' }}>
       <div className={styles.container}>
         <div className={styles.header}>
           <div className={styles.avatar}>

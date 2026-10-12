@@ -1,5 +1,5 @@
 .container {
-  padding-block: 2rem 3rem;
+  padding-block: 0 var(--space-6);
   max-width: var(--page);
   margin: 0 auto;
   padding-inline: var(--gutter);
@@ -7,7 +7,7 @@
 
 .loading,
 .error {
-  padding-block: 5rem;
+  padding-block: var(--space-7);
   text-align: center;
 }
 
@@ -28,7 +28,7 @@
 .breadcrumb {
   font-size: var(--fs-small);
   color: var(--text-2);
-  margin: 0 0 1.5rem;
+  margin: 0 0 var(--space-5);
   padding: 0;
 }
 
@@ -56,20 +56,20 @@
 }
 
 .header {
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-5);
 }
 
 .titleRow {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .title {
   font-size: var(--fs-h1);
   font-weight: 500;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-2);
 }
 
 .meta {
@@ -77,13 +77,13 @@
 }
 
 .section {
-  margin-bottom: 2.25rem;
+  margin-bottom: var(--space-6);
 }
 
 .sectionTitle {
   font-size: var(--fs-h3);
   font-weight: 500;
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--space-3);
 }
 
 .sectionContent {

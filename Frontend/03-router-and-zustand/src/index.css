@@ -49,6 +49,13 @@
   --r-full: 999px;
   --gutter: 1.25rem;
   --page: 70rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2.5rem;
+  --space-7: 4rem;
 }
 
 body {
@@ -110,7 +117,7 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: var(--space-2);
   padding: 0.7rem 1.4rem;
   border-radius: var(--r-full);
   font-size: var(--fs-body);
@@ -239,7 +246,7 @@ label {
   top: 0;
   z-index: 10;
   background-color: var(--bg);
-  padding-block: 0.9rem;
+  padding-block: var(--space-3);
 }
 
 .header-inner {
@@ -250,7 +257,7 @@ label {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .brand {
@@ -273,7 +280,7 @@ label {
 nav {
   display: flex;
   align-items: center;
-  gap: 1.1rem;
+  gap: var(--space-4);
 }
 
 nav a {
@@ -295,12 +302,12 @@ nav a.nav-link-active {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: var(--space-3);
 }
 
 /* Footer: mismo ancho, centrado */
 footer {
-  padding-block: 2rem;
+  padding-block: var(--space-5);
 }
 
 .footer-inner {
@@ -315,29 +322,29 @@ footer {
 .jobs-search {
   max-width: var(--page);
   margin: 0 auto;
-  padding: 2.5rem var(--gutter) 1rem;
+  padding: var(--space-6) var(--gutter) var(--space-4);
 }
 
 .jobs-search h1 {
   font-size: var(--fs-display);
   font-weight: 500;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-2);
 }
 
 .jobs-search p {
   color: var(--text-2);
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-5);
   max-width: 36rem;
 }
 
 .search-bar {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-2);
   background-color: var(--surface);
   box-shadow: var(--card-shadow);
   border-radius: var(--r-full);
-  padding: 0.35rem 0.35rem 0.35rem 1rem;
+  padding: var(--space-1) var(--space-1) var(--space-1) var(--space-4);
 }
 
 .search-bar svg {
@@ -353,15 +360,15 @@ footer {
 .search-filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-top: 0.9rem;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
 }
 
 /* Listado: fondo sólido sutil, sin líneas */
 .jobs-listings {
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
+  gap: var(--space-4);
 }
 
 .job-listing-card {
@@ -369,20 +376,20 @@ footer {
   background-color: var(--surface);
   box-shadow: var(--card-shadow);
   border-radius: var(--r-lg);
-  padding: 1.4rem;
+  padding: var(--space-5);
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .job-listing-card small {
   display: block;
-  margin-top: 0.3rem;
+  margin-top: var(--space-1);
 }
 
 .job-listing-card p {
-  margin-top: 0.6rem;
+  margin-top: var(--space-2);
   color: var(--text-2);
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -393,8 +400,8 @@ footer {
 .badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
-  margin-top: 0.8rem;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
 }
 
 .badge {
@@ -417,7 +424,7 @@ footer {
 }
 
 .prose p {
-  margin: 1rem 0;
+  margin: var(--space-4) 0;
   color: var(--text-2);
 }
 
@@ -427,12 +434,12 @@ footer {
 
 .prose ul {
   list-style-type: disc;
-  padding-left: 1.5rem;
-  margin: 1rem 0;
+  padding-left: var(--space-5);
+  margin: var(--space-4) 0;
 }
 
 .prose li {
-  margin: 0.5rem 0;
+  margin: var(--space-2) 0;
   color: var(--text-2);
 }
 

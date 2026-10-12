@@ -3,14 +3,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2.5rem 1.25rem;
+  padding: var(--space-6) var(--gutter);
 }
 
 .card {
   background-color: var(--surface);
   box-shadow: var(--card-shadow);
   border-radius: var(--r-lg);
-  padding: 2.25rem;
+  padding: var(--space-6);
   width: 100%;
   max-width: 28rem;
 }
@@ -18,24 +18,24 @@
 .title {
   font-size: var(--fs-h1);
   font-weight: 500;
-  margin-bottom: 0.4rem;
+  margin-bottom: var(--space-2);
 }
 
 .subtitle {
   color: var(--text-2);
-  margin-bottom: 1.75rem;
+  margin-bottom: var(--space-5);
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: var(--space-4);
 }
 
 .formGroup {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: var(--space-2);
 }
 
 .label {
@@ -51,12 +51,12 @@
 .submitButton {
   composes: btn btn-primary from global;
   width: 100%;
-  margin-top: 0.4rem;
+  margin-top: var(--space-2);
 }
 
 .footer {
   text-align: center;
-  margin-top: 1.5rem;
+  margin-top: var(--space-5);
   color: var(--text-2);
   font-size: var(--fs-small);
 }
