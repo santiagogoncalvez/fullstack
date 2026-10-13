@@ -1,11 +1,12 @@
 import express from "express";
 import cors from "cors";
 
-const ACCEPTED_ORIGINS = [
-   "http://localhost:3000",
-   "https://midu.dev",
-   "http://localhost:5173",
-];
+// Orígenes permitidos por env (separados por coma).
+// Default: solo el frontend local. En deploy: FRONTEND_URL=https://tu-front.com
+const ACCEPTED_ORIGINS = (process.env.FRONTEND_URL ?? "http://localhost:5173")
+   .split(",")
+   .map((origin) => origin.trim())
+   .filter(Boolean);
 
 export const corsMiddleware = ({ acceptedOrigins = ACCEPTED_ORIGINS } = {}) => {
    return cors({

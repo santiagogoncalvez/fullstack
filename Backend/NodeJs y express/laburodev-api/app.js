@@ -1,7 +1,13 @@
 import express from "express";
+import { existsSync } from "node:fs";
 import { DEFAULTS } from "./config.js";
 import { corsMiddleware } from "./middlewares/cors.js";
 import { jobsRouter } from "./routes/jobs.js";
+
+// .env local opcional (ver .env.example). No pisa variables ya definidas.
+if (existsSync(".env")) {
+   process.loadEnvFile();
+}
 
 const PORT = process.env.PORT ?? DEFAULTS.PORT;
 
