@@ -56,14 +56,16 @@ export class JobModel {
       };
    }
 
-   static async create({ title, company, location, data }) {
+   static async create({ title, company, location, description, data, content }) {
       const newJob = {
          // id es un campo obligatorio
          id: randomUUID(), // generamos un id aleatorio
          title,
          company,
          location, // location es opcional
+         description,
          data, // data es un campo obligatorio
+         content,
       };
 
       jobs.push(newJob);
@@ -81,7 +83,7 @@ export class JobModel {
       return job;
    }
 
-   static async update({ id, title, company, location, data }) {
+   static async update({ id, title, company, location, description, data, content }) {
       // Buscamos el índice del trabajo en la lista
       const jobIndex = jobs.findIndex((job) => job.id === id);
 
@@ -95,7 +97,9 @@ export class JobModel {
          title,
          company,
          location,
+         description,
          data,
+         content,
       };
 
       // Reemplazamos el trabajo en la lista
@@ -104,7 +108,7 @@ export class JobModel {
       return updatedJob;
    }
 
-   static async partialUpdate({ id, title, company, location, data }) {
+   static async partialUpdate({ id, title, company, location, description, data, content }) {
       // Buscamos el trabajo por su id
       const jobIndex = jobs.findIndex((job) => job.id === id);
 
@@ -121,7 +125,9 @@ export class JobModel {
          ...(title !== undefined && { title }),
          ...(company !== undefined && { company }),
          ...(location !== undefined && { location }),
+         ...(description !== undefined && { description }),
          ...(data !== undefined && { data }),
+         ...(content !== undefined && { content }),
       };
 
       // Actualizamos el trabajo en la lista

@@ -7,6 +7,7 @@ const PORT = 3001;
 const BASE_URL = `http://localhost:${PORT}`;
 
 let createdId;
+let validationId;
 
 // antes de cada test se inicia el servidor
 before(async () => {
@@ -203,9 +204,9 @@ describe("PUT /jobs/:id", () => {
          method: "PUT",
          headers: { "Content-Type": "application/json" },
          body: JSON.stringify({
-            title: "X",
+            title: "Xyz",
             company: "X",
-            data: { technology: [], mode: "remoto", level: "junior" },
+            data: { technology: ["x"], mode: "remoto", level: "junior" },
          }),
       });
       assert.strictEqual(response.status, 404);
@@ -239,9 +240,116 @@ describe("PATCH /jobs/:id", () => {
       const response = await fetch(`${BASE_URL}/jobs/no-existe`, {
          method: "PATCH",
          headers: { "Content-Type": "application/json" },
-         body: JSON.stringify({ title: "X" }),
+         body: JSON.stringify({ title: "Xyz" }),
       });
       assert.strictEqual(response.status, 404);
+   });
+});
+
+describe("validaciones zod", () => {
+   test("POST debe responder 400 si el título es muy corto", async () => {
+      const response = await fetch(`${BASE_URL}/jobs`, {
+         method: "POST",
+         headers: { "Content-Type": "application/json" },
+         body: JSON.stringify({
+            title: "QA",
+            company: "ACME",
+            data: { technology: ["qa"] },
+         }),
+      });
+      assert.strictEqual(response.status, 400);
+
+      const json = await response.json();
+      assert.strictEqual(
+         json.message,
+         "El título debe tener al menos 3 caracteres",
+      );
+   });
+
+   test("POST debe responder 400 sin tecnologías", async () => {
+      const response = await fetch(`${BASE_URL}/jobs`, {
+         method: "POST",
+         headers: { "Content-Type": "application/json" },
+         body: JSON.stringify({
+            title: "QA Manual",
+            company: "ACME",
+            data: { technology: [] },
+         }),
+      });
+      assert.strictEqual(response.status, 400);
+   });
+
+   test("POST debe responder 400 con un nivel inválido", async () => {
+      const response = await fetch(`${BASE_URL}/jobs`, {
+         method: "POST",
+         headers: { "Content-Type": "application/json" },
+         body: JSON.stringify({
+            title: "QA Manual",
+            company: "ACME",
+            data: { technology: ["qa"], level: "mid" },
+         }),
+      });
+      assert.strictEqual(response.status, 400);
+   });
+
+   test("POST debe ignorar campos desconocidos", async () => {
+      const response = await fetch(`${BASE_URL}/jobs`, {
+         method: "POST",
+         headers: { "Content-Type": "application/json" },
+         body: JSON.stringify({
+            title: "QA Manual",
+            company: "ACME",
+            data: { technology: ["qa"] },
+            hack: "campo extra",
+         }),
+      });
+      assert.strictEqual(response.status, 201);
+
+      const job = await response.json();
+      assert.ok(!("hack" in job), "Los campos extra no se guardan");
+      validationId = job.id;
+   });
+
+   test("PUT debe aceptar sin location porque es opcional", async () => {
+      const response = await fetch(`${BASE_URL}/jobs/${validationId}`, {
+         method: "PUT",
+         headers: { "Content-Type": "application/json" },
+         body: JSON.stringify({
+            title: "QA Manual",
+            company: "ACME",
+            data: { technology: ["qa"] },
+         }),
+      });
+      assert.strictEqual(response.status, 200);
+   });
+
+   test("PATCH debe aceptar data parcial anidada", async () => {
+      const response = await fetch(`${BASE_URL}/jobs/${validationId}`, {
+         method: "PATCH",
+         headers: { "Content-Type": "application/json" },
+         body: JSON.stringify({ data: { level: "lead" } }),
+      });
+      assert.strictEqual(response.status, 200);
+
+      const job = await response.json();
+      assert.strictEqual(job.data.level, "lead");
+      assert.strictEqual(job.title, "QA Manual", "Lo no enviado se conserva");
+   });
+
+   test("PATCH debe responder 400 con un título inválido", async () => {
+      const response = await fetch(`${BASE_URL}/jobs/${validationId}`, {
+         method: "PATCH",
+         headers: { "Content-Type": "application/json" },
+         body: JSON.stringify({ title: "x" }),
+      });
+      assert.strictEqual(response.status, 400);
+   });
+
+   test("DELETE debe limpiar el trabajo de validación", async () => {
+      const response = await fetch(`${BASE_URL}/jobs/${validationId}`, {
+         method: "DELETE",
+      });
+      assert.strictEqual(response.status, 204);
    });
 });
 

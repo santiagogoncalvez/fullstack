@@ -1,5 +1,10 @@
 import { JobModel } from "../models/jobs.js";
 import { DEFAULTS } from "../config.js";
+import { validateJob, validatePartialJob } from "../schemas/jobs.js";
+
+function validationError(res, result) {
+   return res.status(400).json({ message: result.error.issues[0].message });
+}
 
 export class JobController {
    static async getAll(req, res) {
@@ -61,20 +66,13 @@ export class JobController {
    }
 
    static async create(req, res) {
-      const { title, company, location, data } = req.body;
+      const result = validateJob(req.body);
 
-      if (!title || !company || !data) {
-         return res
-            .status(400)
-            .json({ message: "title, company and data are required" });
+      if (!result.success) {
+         return validationError(res, result);
       }
 
-      const newJob = await JobModel.create({
-         title,
-         company,
-         location,
-         data,
-      });
+      const newJob = await JobModel.create(result.data);
 
       return res.status(201).json(newJob);
    }
@@ -83,21 +81,15 @@ export class JobController {
       // Extraemos el id de los parámetros de la URL
       const { id } = req.params;
 
-      // Extraemos los datos del body enviado por el cliente
-      const { title, company, location, data } = req.body;
+      const result = validateJob(req.body);
 
-      if (!title || !company || !data) {
-         return res
-            .status(400)
-            .json({ message: "title, company and data are required" });
+      if (!result.success) {
+         return validationError(res, result);
       }
 
       const updatedJob = await JobModel.update({
          id,
-         title,
-         company,
-         location,
-         data,
+         ...result.data,
       });
 
       if (!updatedJob) {
@@ -112,23 +104,28 @@ export class JobController {
       const { id } = req.params;
 
       // Extraemos los datos del body enviado por el cliente
-      const { title, company, location, data } = req.body;
+      const { title, company, location, description, data, content } = req.body;
 
       if (
          title === undefined &&
          company === undefined &&
          location === undefined &&
-         data === undefined
+         description === undefined &&
+         data === undefined &&
+         content === undefined
       ) {
          return res.status(400).json({ message: "nothing to update" });
       }
 
+      const result = validatePartialJob(req.body);
+
+      if (!result.success) {
+         return validationError(res, result);
+      }
+
       const updatedJob = await JobModel.partialUpdate({
          id,
-         title,
-         company,
-         location,
-         data,
+         ...result.data,
       });
 
       if (!updatedJob) {
