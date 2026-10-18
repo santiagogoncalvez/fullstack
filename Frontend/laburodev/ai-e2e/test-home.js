@@ -48,5 +48,6 @@ test("La home anuncia la próxima edición y el programa tiene charlas", async (
       );
    } finally {
       await stagehand.close();
+      await browser.close();
    }
 });

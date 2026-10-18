@@ -31,7 +31,7 @@ test("Un usuario puede entrar a la JSConf y adquirir dos entradas por €287.98"
          "Add two 'Entrada' tickets to the cart for the JSConf event",
       );
 
-      const result = await stagehand.extract(
+      const { data: result } = await stagehand.extract(
          "Extract the subtotal amount displayed in the cart",
          z.object({ subtotal: z.string() }),
       );
@@ -39,5 +39,6 @@ test("Un usuario puede entrar a la JSConf y adquirir dos entradas por €287.98"
       assert.strictEqual(result.subtotal, "€287.98");
    } finally {
       await stagehand.close();
+      await browser.close();
    }
 });
