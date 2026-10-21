@@ -15,10 +15,10 @@ Estoy en la parte práctica del curso https://www.jscamp.dev/ (`De cero a Full S
 
 Hecho hasta ahora:
 
+- `laburodev/backend/` — API REST de empleos `/jobs` con Express 5: `GET /jobs` con filtros (`text, title, level, type, technology`) + paginación (`limit/offset`), `GET /jobs/:id`, `POST /`, `PUT /:id`, `PATCH /:id`, `DELETE /:id`. Arquitectura `routes / controllers / models`, validación con Zod en controllers, CORS, `jobs.json` como persistencia temporal.
+- `laburodev/frontend/` — app de empleos en React + Vite: router propio + `react-router`, `zustand` para auth y favoritos, búsqueda, paginación, login/register, rutas protegidas.
 - `Backend/node-express/fundamentos-nodejs/` — servidor con `node:http`, rutas `/users` y `/health`, query params `limit/offset`, `POST /users`, `.env` con `PORT`.
-- `Backend/node-express/laburodev-api/` — API REST de empleos `/jobs` con Express 5: `GET /jobs` con filtros (`text, title, level, type, technology`) + paginación (`limit/offset`), `GET /jobs/:id`, `POST /`, `PUT /:id`, `PATCH /:id`. Arquitectura `routes / controllers / models`, CORS, `jobs.json` como persistencia temporal.
 - `Backend/PostreSQL/tutorial documentacion/` — inicio del tutorial oficial de PostgreSQL.
-- `Frontend/laburodev/` — app de empleos en React + Vite: router propio + `react-router`, `zustand` para auth y favoritos, `Context` para auth/favs, búsqueda, paginación, login/register, rutas protegidas.
 
 Ver detalle del plan completo en `Backend/Roadmap.txt`.
 
@@ -32,33 +32,34 @@ Ver detalle del plan completo en `Backend/Roadmap.txt`.
 ## 🏗️ Estructura
 
 ```text
+laburodev/
+  frontend/   # app DevJobs (React + Vite)
+  backend/    # API jobs (Express, routes/controllers/models)
 Backend/
   node-express/
     fundamentos-nodejs/  # node:http base
-    express/              # API jobs (routes/controllers/models)
   PostreSQL/              # práctica SQL
   Roadmap.txt             # plan completo 6 etapas
-Frontend/
-  laburodev/  # app DevJobs
 ```
 
 ## 🚀 Cómo correr
 
 ```bash
 # API Express
-cd "Backend/node-express/laburodev-api"
+cd laburodev/backend
 npm install
 node app.js
 # GET http://localhost:3000/jobs
 
-# Fundamentos Node
-cd "../fundamentos-nodejs"
-node server.js
-
 # Frontend
-cd "../../../Frontend/laburodev"
+cd ../frontend
 npm install
 npm run dev
+# http://localhost:5173
+
+# Fundamentos Node
+cd ../../Backend/node-express/fundamentos-nodejs
+node server.js
 ```
 
 ## 🗺️ Siguiente
