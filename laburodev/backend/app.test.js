@@ -371,3 +371,52 @@ describe("DELETE /jobs/:id", () => {
       assert.strictEqual(response.status, 404);
    });
 });
+
+describe("GET /ai/summary/:id", () => {
+   let validJobId;
+
+   before(async () => {
+      const list = await (await fetch(`${BASE_URL}/jobs?limit=1`)).json();
+      validJobId = list.data[0].id;
+   });
+
+   test("debe responder 200 y stream de texto con resumen", async () => {
+      const response = await fetch(`${BASE_URL}/ai/summary/${validJobId}`);
+      assert.strictEqual(response.status, 200);
+      assert.strictEqual(
+         response.headers.get("content-type"),
+         "text/plain; charset=utf-8",
+      );
+
+      const text = await response.text();
+      assert.ok(text.length > 0, "Debe devolver contenido");
+      assert.ok(
+         /tech|senior|developer|software|javascript|react/i.test(text),
+         "Resumen debe contener palabras clave del trabajo",
+      );
+   });
+
+   test("debe responder 404 con id inexistente", async () => {
+      const response = await fetch(`${BASE_URL}/ai/summary/no-existe`);
+      assert.strictEqual(response.status, 400); // Zod validation UUID
+      const json = await response.json();
+      assert.ok(json.error);
+   });
+
+   test("debe responder 404 con UUID válido pero trabajo no existe", async () => {
+      const fakeUuid = "00000000-0000-0000-0000-000000000000";
+      const response = await fetch(`${BASE_URL}/ai/summary/${fakeUuid}`);
+      assert.strictEqual(response.status, 404);
+      const json = await response.json();
+      assert.strictEqual(json.error, "Empleo no encontrado");
+   });
+
+   test("debe incluir headers de rate limit", async () => {
+      const response = await fetch(`${BASE_URL}/ai/summary/${validJobId}`);
+      assert.ok(response.headers.get("ratelimit"), "Header RateLimit presente");
+      assert.ok(
+         response.headers.get("ratelimit-policy"),
+         "Header RateLimit-Policy presente",
+      );
+   });
+});
