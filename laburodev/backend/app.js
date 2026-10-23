@@ -1,22 +1,29 @@
 import express from "express";
 import { existsSync } from "node:fs";
-import { DEFAULTS } from "./config.js";
-import { corsMiddleware } from "./middlewares/cors.js";
-import { jobsRouter } from "./routes/jobs.js";
 
-// .env local opcional (ver .env.example). No pisa variables ya definidas.
+// Cargar .env ANTES de importar config.js y routes
 if (existsSync(".env")) {
    process.loadEnvFile();
 }
+
+import { DEFAULTS } from "./config.js";
+import { corsMiddleware } from "./middlewares/cors.js";
+import { jobsRouter } from "./routes/jobs.js";
+import { aiRouter } from "./routes/ai.js";
+import { generalLimiter } from "./middlewares/rateLimit.js";
 
 const PORT = process.env.PORT ?? DEFAULTS.PORT;
 
 const app = express();
 
+app.set("trust proxy", 1);
+
 app.use(corsMiddleware());
 app.use(express.json());
+app.use(generalLimiter);
 
 app.use("/jobs", jobsRouter);
+app.use("/ai", aiRouter);
 
 app.use((req, res) => {
    res.status(404).json({ message: "Not found" });
