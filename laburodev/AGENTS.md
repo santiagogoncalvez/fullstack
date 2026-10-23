@@ -5,14 +5,15 @@ Bolsa de trabajos para desarrolladores. Frontend (React + Vite) y API (Express 5
 ## Estructura
 
 - **Paquetes independientes**: `frontend/` y `backend/` son hermanos, sin npm workspaces. Cada uno tiene su `package.json`, su lockfile y su `node_modules`.
-- `frontend/` — Vite + React 19 + SWC + Zustand + React Router.
-- `backend/` — Express 5 + Zod, persistencia en `jobs.json` (todavía no hay base de datos).
+- `frontend/` — Vite + React 19 + SWC + Zustand + React Router + Streamdown.
+- `backend/` — Express 5 + Zod + Vercel AI SDK (`ai`, `@ai-sdk/google`), persistencia en `jobs.json` (todavía no hay base de datos).
 
 ## Comandos
 
 ```bash
 # API (desde laburodev/backend/)
 npm start          # node app.js, API en :3000
+npm run dev        # node --watch app.js
 npm test           # node --test: app.test.js (CRUD, filtros, paginación, errores)
 
 # Frontend (desde laburodev/frontend/)
@@ -33,6 +34,28 @@ Si al reinstalar `@swc/core` falla con *"Failed to load native binding"* (permis
 - Frontend: la **URL manda** el estado de búsqueda y filtros (`useSearchParams`); nunca escribir params desde efectos.
 - Diseño: leer `frontend/DESIGN-SYSTEM.md` antes de tocar UI (tokens, Bricolage Grotesque, lucide-react, cero emoji).
 
+## IA — Resumen de empleos (`/ai/summary/:id`)
+
+Backend:
+- Endpoint: `GET /ai/summary/:id` — streaming con Vercel AI SDK + Gemini.
+- Rate limit específico: 5 req/min/IP (`middlewares/rateLimit.js` → `aiRateLimiter`).
+- Validación Zod en params (`id` UUID).
+- Prompt en `routes/ai.js`: adaptado a la estructura de job (`title`, `company`, `location`, `data.level`, `data.technology`, `content.description`).
+- Modelo configurable: `MODEL_AI` en `.env` (default `gemini-3.5-flash-lite`).
+- Requiere `GOOGLE_GENERATIVE_AI_API_KEY` en `.env`.
+
+Frontend:
+- Hook: `hooks/useAISummary.jsx` — fetch streaming con `ReadableStream` + `TextDecoder`.
+- Componente: `components/AISummary.jsx` — botón generar/regenerar + `Streamdown` para markdown animado.
+- Integrado en `pages/Detail.jsx` tras el header.
+
+## Rate Limiting
+
+- **Global**: `generalLimiter` (100 req/15 min/IP) aplicado a toda la API en `app.js`.
+- **IA específico**: `aiRateLimiter` (5 req/1 min/IP) solo en `/ai/*`.
+- Headers estándar `RateLimit`, `RateLimit-Policy` (draft-8).
+- `app.set("trust proxy", 1)` para IPs reales detrás de proxy (Vercel).
+
 ## Tests con agente (`frontend/ai-e2e/`)
 
 Prereq: API en `:3000` + front en `:5173` + `AI_API_KEY` en `frontend/.env` (gitignoreado). Modelo con `AI_MODEL` (default `google/gemini-3.1-flash-online`).
@@ -52,3 +75,4 @@ Dos projects separados, uno por paquete. Root Directory: `laburodev/frontend` y 
 
 - Frontend: `vercel.json` con rewrite SPA; `VITE_API_URL` en build.
 - API: `FRONTEND_URL` en runtime (URLs separadas por coma, tolera slash final) para CORS, más `PORT`.
+- Variables de entorno IA en backend: `GOOGLE_GENERATIVE_AI_API_KEY`, `MODEL_AI`.
