@@ -1,6 +1,5 @@
 .section {
-  margin-top: var(--space-6);
-  padding-top: var(--space-5);
+  /* Sin margin/padding: el gap del container (Detail) maneja el espaciado */
 }
 
 .header {
