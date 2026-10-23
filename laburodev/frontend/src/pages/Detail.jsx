@@ -8,6 +8,7 @@ import { Link } from "../components/Link"
 import snarkdown from 'snarkdown'
 import styles from './Detail.module.css'
 import { useFavoritesStore } from "../store/favoritesStore"
+import { AISummary } from "../components/AISummary"
 
 function JobSection ({ title, content }) {
   const html = snarkdown(content)
@@ -145,6 +146,7 @@ export default function JobDetail () {
     <div className={styles.container}>
       <DetailPageBreadCrumb job={job} />
       <DetailPageHeader job={job} />
+      <AISummary jobId={job.id} />
 
       <JobSection title="Descripción del puesto" content={job.content.description} />
       <JobSection title="Responsabilidades" content={job.content.responsibilities} />
