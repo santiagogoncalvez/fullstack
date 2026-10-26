@@ -1,149 +1,137 @@
-import jobs from "../jobs.json" with { type: "json" };
-import { randomUUID } from "node:crypto";
-import { DEFAULTS } from "../config.js";
+import { db } from "../db/index.js";
 
 export class JobModel {
-   static async getAll({
-      text,
-      level,
-      type,
-      limit = DEFAULTS.LIMIT_PAGINATION,
-      offset = DEFAULTS.LIMIT_OFFSET,
-      technology,
-   }) {
-      let filteredJobs = jobs;
-      if (text) {
-         const searchTerm = text.toLowerCase();
+   static async getAll ({ limit = 10, offset = 0, search, level, technology } = {}) {
+      let sql = "SELECT * FROM jobs WHERE 1=1";
+      const params = [];
 
-         filteredJobs = filteredJobs.filter(
-            (job) =>
-               job.title.toLowerCase().includes(searchTerm) ||
-               (job.description?.toLowerCase().includes(searchTerm) ?? false),
-         );
-      }
-
-      if (type) {
-         filteredJobs = filteredJobs.filter(
-            (job) => job.data.mode === type,
-         );
-      }
-
-      if (technology) {
-         filteredJobs = filteredJobs.filter((job) =>
-            job.data.technology.some(
-               (t) => t.toLowerCase() === technology.toLowerCase(),
-            ),
-         );
+      if (search) {
+         sql += " AND (title LIKE ? OR description LIKE ?)";
+         params.push(`%${search}%`, `%${search}%`);
       }
 
       if (level) {
-         filteredJobs = filteredJobs.filter((job) => job.data.level === level);
+         sql += " AND level = ?";
+         params.push(level);
       }
 
-      const limitNumber = parseInt(limit, 10);
-      const offsetNumber = parseInt(offset, 10);
+      // Si se filtra por tecnología, buscamos dentro de requirements o description/responsibilities
+      if (technology) {
+         sql += " AND (requirements LIKE ? OR description LIKE ?)";
+         params.push(`%${technology}%`, `%${technology}%`);
+      }
 
-      const paginatedJobs = filteredJobs.slice(
-         offsetNumber,
-         offsetNumber + limitNumber,
-      );
+      sql += " LIMIT ? OFFSET ?";
+      params.push(Number(limit ?? 10), Number(offset ?? 0));
+
+      const result = await db.execute({ sql, args: params });
+
+      const rows = result.rows;
+      return {
+         data: rows.map((row) => ({
+            id: row.id,
+            title: row.title,
+            company: row.company,
+            location: row.location,
+            data: { level: row.level },
+            content: {
+               description: row.description,
+               responsibilities: JSON.parse(row.responsibilities || "[]"),
+               requirements: JSON.parse(row.requirements || "[]"),
+               about: row.about,
+            },
+         })),
+         total: rows.length,
+         limit: Number(limit ?? 10),
+         offset: Number(offset ?? 0),
+      };
+   }
+
+   static async getById (id) {
+      const result = await db.execute({
+         sql: "SELECT * FROM jobs WHERE id = ?",
+         args: [String(id)],
+      });
+
+      const row = result.rows[0];
+      if (!row) return null;
 
       return {
-         data: paginatedJobs,
-         total: filteredJobs.length,
-         limit: limitNumber,
-         offset: offsetNumber,
+         id: row.id,
+         title: row.title,
+         company: row.company,
+         location: row.location,
+         data: { level: row.level },
+         content: {
+            description: row.description,
+            responsibilities: JSON.parse(row.responsibilities || "[]"),
+            requirements: JSON.parse(row.requirements || "[]"),
+            about: row.about,
+         },
       };
    }
 
-   static async create({ title, company, location, description, data, content }) {
-      const newJob = {
-         // id es un campo obligatorio
-         id: randomUUID(), // generamos un id aleatorio
-         title,
-         company,
-         location, // location es opcional
-         description,
-         data, // data es un campo obligatorio
-         content,
-      };
+   static async create (inputData) {
+      const id = crypto.randomUUID();
+      const title = String(inputData.title ?? "");
+      const company = String(inputData.company ?? "");
+      const location = String(inputData.location ?? "");
+      const level = String(inputData.data?.level ?? inputData.level ?? "Junior");
+      const description = String(inputData.content?.description ?? inputData.description ?? "");
+      const responsibilities = JSON.stringify(inputData.content?.responsibilities ?? inputData.responsibilities ?? []);
+      const requirements = JSON.stringify(inputData.content?.requirements ?? inputData.requirements ?? []);
+      const about = String(inputData.content?.about ?? inputData.about ?? "");
 
-      jobs.push(newJob);
+      await db.execute({
+         sql: `
+            INSERT INTO jobs (id, title, company, location, level, description, responsibilities, requirements, about)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+         `,
+         args: [id, title, company, location, level, description, responsibilities, requirements, about],
+      });
 
-      return newJob;
+      return this.getById(id);
    }
 
-   static async getById(id) {
-      const job = jobs.find((job) => job.id === id);
+   static async update (id, inputData) {
+      const existing = await this.getById(id);
+      if (!existing) return null;
 
-      if (!job) {
-         return null;
-      }
+      const title = String(inputData.title ?? existing.title);
+      const company = String(inputData.company ?? existing.company);
+      const location = String(inputData.location ?? existing.location);
+      const level = String(inputData.data?.level ?? existing.data.level);
+      const description = String(inputData.content?.description ?? existing.content.description);
+      const responsibilities = JSON.stringify(inputData.content?.responsibilities ?? existing.content.responsibilities);
+      const requirements = JSON.stringify(inputData.content?.requirements ?? existing.content.requirements);
+      const about = String(inputData.content?.about ?? existing.content.about);
 
-      return job;
+      await db.execute({
+         sql: `
+            UPDATE jobs
+            SET title = ?, company = ?, location = ?, level = ?,
+                description = ?, responsibilities = ?,
+                requirements = ?, about = ?
+            WHERE id = ?
+         `,
+         args: [title, company, location, level, description, responsibilities, requirements, about, String(id)],
+      });
+
+      return this.getById(id);
    }
 
-   static async update({ id, title, company, location, description, data, content }) {
-      // Buscamos el índice del trabajo en la lista
-      const jobIndex = jobs.findIndex((job) => job.id === id);
-
-      if (jobIndex === -1) {
-         return null;
-      }
-
-      // Creamos el objeto reemplazando el trabajo anterior
-      const updatedJob = {
-         id, // Conservamos el id original
-         title,
-         company,
-         location,
-         description,
-         data,
-         content,
-      };
-
-      // Reemplazamos el trabajo en la lista
-      jobs[jobIndex] = updatedJob;
-
-      return updatedJob;
+   static async partialUpdate (id, inputData) {
+      return this.update(id, inputData);
    }
 
-   static async partialUpdate({ id, title, company, location, description, data, content }) {
-      // Buscamos el trabajo por su id
-      const jobIndex = jobs.findIndex((job) => job.id === id);
+   static async delete (id) {
+      const existing = await this.getById(id);
+      if (!existing) return false;
 
-      if (jobIndex === -1) {
-         return null;
-      }
-
-      // Obtenemos el trabajo actual
-      const currentJob = jobs[jobIndex];
-
-      // Creamos un objeto combinando los datos actuales con los nuevos
-      const updatedJob = {
-         ...currentJob,
-         ...(title !== undefined && { title }),
-         ...(company !== undefined && { company }),
-         ...(location !== undefined && { location }),
-         ...(description !== undefined && { description }),
-         ...(data !== undefined && { data }),
-         ...(content !== undefined && { content }),
-      };
-
-      // Actualizamos el trabajo en la lista
-      jobs[jobIndex] = updatedJob;
-
-      return updatedJob;
-   }
-
-   static async delete(id) {
-      const jobIndex = jobs.findIndex((job) => job.id === id);
-
-      if (jobIndex === -1) {
-         return false;
-      }
-
-      jobs.splice(jobIndex, 1);
+      await db.execute({
+         sql: "DELETE FROM jobs WHERE id = ?",
+         args: [String(id)],
+      });
 
       return true;
    }
