@@ -1,4 +1,4 @@
-import { Building2, Heart, MapPin, Signal } from "lucide-react";
+import { Building2, Heart, MapPin, Signal, Wifi, Home } from "lucide-react";
 import { Link } from "./Link";
 import { formatJobLevel } from "../constants/levels.js";
 import styles from "./JobCard.module.css";
@@ -46,6 +46,12 @@ export function JobCard({ job }) {
                   {job.location}
                </span>
                <span className="meta-item">
+                  {job.data?.modality === "remoto"
+                     ? <Wifi size={14} aria-hidden="true" />
+                     : <Home size={14} aria-hidden="true" />}
+                  {job.data?.modality === "remoto" ? "Remoto" : "Presencial"}
+               </span>
+               <span className="meta-item">
                   <Signal size={14} aria-hidden="true" />
                   {formatJobLevel(job.data.level)}
                </span>
@@ -56,6 +62,11 @@ export function JobCard({ job }) {
                   <span key={t} className="badge">{t}</span>
                ))}
             </div>
+            {job.createdAt && (
+               <span className={styles.createdAt}>
+                  Publicado: {new Date(job.createdAt).toLocaleDateString("es-AR")}
+               </span>
+            )}
          </div>
          <div className={styles.actions}>
             <JobCardFavoriteButton jobId={job.id} />
