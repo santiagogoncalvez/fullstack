@@ -9,3 +9,6 @@ Thumbs.db
 .vscode/*
 !.vscode/settings.json
 coverage/
+
+# SQLite local database
+*.db
