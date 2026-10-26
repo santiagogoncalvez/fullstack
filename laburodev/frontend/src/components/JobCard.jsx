@@ -50,7 +50,7 @@ export function JobCard({ job }) {
                   {formatJobLevel(job.data.level)}
                </span>
             </div>
-            <p>{job.description}</p>
+            <p>{job.content?.description}</p>
             <div className="badges">
                {techList(job).map((t) => (
                   <span key={t} className="badge">{t}</span>
