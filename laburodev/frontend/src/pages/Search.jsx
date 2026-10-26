@@ -58,10 +58,16 @@ const useFilters = () => {
         const response = await fetch(
            `${API_URL}/jobs?${queryParams}`,
         );
+
+        if (!response.ok) {
+          const errBody = await response.json().catch(() => ({}))
+          throw new Error(errBody.message || `Error ${response.status}`)
+        }
+
         const json = await response.json()
 
-        setJobs(json.data)
-        setTotal(json.total)
+        setJobs(json.data ?? [])
+        setTotal(json.total ?? 0)
         setError(null)
       } catch (error) {
         setError('No se pudieron cargar los empleos. Revisá que la API esté corriendo.')
