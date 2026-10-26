@@ -4,12 +4,15 @@ CREATE TABLE IF NOT EXISTS jobs (
   company TEXT NOT NULL,
   location TEXT NOT NULL,
   level TEXT NOT NULL,
+  modality TEXT NOT NULL DEFAULT 'remoto',
+  technology TEXT NOT NULL DEFAULT '[]',
   description TEXT NOT NULL,
-  responsibilities TEXT NOT NULL, -- JSON string
-  requirements TEXT NOT NULL,     -- JSON string
+  responsibilities TEXT NOT NULL,
+  requirements TEXT NOT NULL,
   about TEXT NOT NULL,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE INDEX IF NOT EXISTS idx_jobs_level ON jobs(level);
 CREATE INDEX IF NOT EXISTS idx_jobs_title ON jobs(title);
+CREATE INDEX IF NOT EXISTS idx_jobs_modality ON jobs(modality);

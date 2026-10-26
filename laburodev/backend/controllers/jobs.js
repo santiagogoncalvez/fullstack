@@ -11,10 +11,10 @@ export class JobController {
       const {
          text,
          level,
-         type,
          limit = DEFAULTS.LIMIT_PAGINATION,
          offset = DEFAULTS.LIMIT_OFFSET,
          technology,
+         modality,
       } = req.query;
 
       const limitNumber = Number(limit);
@@ -37,12 +37,12 @@ export class JobController {
          limit: responseLimit,
          offset: responseOffset,
       } = await JobModel.getAll({
-         text,
+         search: text,
          level,
-         type,
+         technology,
+         modality,
          limit: Math.min(limitNumber, DEFAULTS.MAX_LIMIT_PAGINATION),
          offset: offsetNumber,
-         technology,
       });
 
       return res.json({

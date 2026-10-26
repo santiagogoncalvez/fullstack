@@ -1,7 +1,7 @@
 import { db } from "../db/index.js";
 
 export class JobModel {
-   static async getAll ({ limit = 10, offset = 0, search, level, technology } = {}) {
+   static async getAll ({ limit = 10, offset = 0, search, level, technology, modality } = {}) {
       let sql = "SELECT * FROM jobs WHERE 1=1";
       const params = [];
 
@@ -15,10 +15,14 @@ export class JobModel {
          params.push(level);
       }
 
-      // Si se filtra por tecnología, buscamos dentro de requirements o description/responsibilities
       if (technology) {
-         sql += " AND (requirements LIKE ? OR description LIKE ?)";
-         params.push(`%${technology}%`, `%${technology}%`);
+         sql += " AND technology LIKE ?";
+         params.push(`%${technology}%`);
+      }
+
+      if (modality) {
+         sql += " AND modality = ?";
+         params.push(modality);
       }
 
       sql += " LIMIT ? OFFSET ?";
@@ -33,7 +37,12 @@ export class JobModel {
             title: row.title,
             company: row.company,
             location: row.location,
-            data: { level: row.level },
+            createdAt: row.created_at,
+            data: {
+               level: row.level,
+               modality: row.modality,
+               technology: JSON.parse(row.technology || "[]"),
+            },
             content: {
                description: row.description,
                responsibilities: JSON.parse(row.responsibilities || "[]"),
@@ -61,7 +70,12 @@ export class JobModel {
          title: row.title,
          company: row.company,
          location: row.location,
-         data: { level: row.level },
+         createdAt: row.created_at,
+         data: {
+            level: row.level,
+            modality: row.modality,
+            technology: JSON.parse(row.technology || "[]"),
+         },
          content: {
             description: row.description,
             responsibilities: JSON.parse(row.responsibilities || "[]"),
@@ -77,6 +91,8 @@ export class JobModel {
       const company = String(inputData.company ?? "");
       const location = String(inputData.location ?? "");
       const level = String(inputData.data?.level ?? inputData.level ?? "Junior");
+      const modality = String(inputData.data?.modality ?? inputData.modality ?? "remoto");
+      const technology = JSON.stringify(inputData.data?.technology ?? inputData.technology ?? []);
       const description = String(inputData.content?.description ?? inputData.description ?? "");
       const responsibilities = JSON.stringify(inputData.content?.responsibilities ?? inputData.responsibilities ?? []);
       const requirements = JSON.stringify(inputData.content?.requirements ?? inputData.requirements ?? []);
@@ -84,10 +100,10 @@ export class JobModel {
 
       await db.execute({
          sql: `
-            INSERT INTO jobs (id, title, company, location, level, description, responsibilities, requirements, about)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO jobs (id, title, company, location, level, modality, technology, description, responsibilities, requirements, about)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
          `,
-         args: [id, title, company, location, level, description, responsibilities, requirements, about],
+         args: [id, title, company, location, level, modality, technology, description, responsibilities, requirements, about],
       });
 
       return this.getById(id);
@@ -101,6 +117,8 @@ export class JobModel {
       const company = String(inputData.company ?? existing.company);
       const location = String(inputData.location ?? existing.location);
       const level = String(inputData.data?.level ?? existing.data.level);
+      const modality = String(inputData.data?.modality ?? existing.data.modality);
+      const technology = JSON.stringify(inputData.data?.technology ?? existing.data.technology ?? []);
       const description = String(inputData.content?.description ?? existing.content.description);
       const responsibilities = JSON.stringify(inputData.content?.responsibilities ?? existing.content.responsibilities);
       const requirements = JSON.stringify(inputData.content?.requirements ?? existing.content.requirements);
@@ -109,12 +127,12 @@ export class JobModel {
       await db.execute({
          sql: `
             UPDATE jobs
-            SET title = ?, company = ?, location = ?, level = ?,
+            SET title = ?, company = ?, location = ?, level = ?, modality = ?, technology = ?,
                 description = ?, responsibilities = ?,
                 requirements = ?, about = ?
             WHERE id = ?
          `,
-         args: [title, company, location, level, description, responsibilities, requirements, about, String(id)],
+         args: [title, company, location, level, modality, technology, description, responsibilities, requirements, about, String(id)],
       });
 
       return this.getById(id);
