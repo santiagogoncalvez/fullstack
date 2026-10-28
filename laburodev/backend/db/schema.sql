@@ -12,7 +12,3 @@ CREATE TABLE IF NOT EXISTS jobs (
   about TEXT NOT NULL,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
-
-CREATE INDEX IF NOT EXISTS idx_jobs_level ON jobs(level);
-CREATE INDEX IF NOT EXISTS idx_jobs_title ON jobs(title);
-CREATE INDEX IF NOT EXISTS idx_jobs_modality ON jobs(modality);

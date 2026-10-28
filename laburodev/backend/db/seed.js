@@ -18,11 +18,39 @@ const FALLBACK_LOCATIONS = [
 
 async function seed() {
   try {
+    // Reset: solo para aprendizaje/curso — recrea todo desde cero
+    if (process.argv.includes("--reset")) {
+      console.log("⚠️  Modo reset: eliminando tabla jobs...");
+      await db.execute("DROP TABLE IF EXISTS jobs");
+      console.log("🗑️  Tabla eliminada.");
+    }
+
     console.log("⏳ Inicializando esquema de base de datos...");
     const schemaPath = path.resolve("db/schema.sql");
     const schemaSql = fs.readFileSync(schemaPath, "utf-8");
     await db.executeMultiple(schemaSql);
     console.log("✅ Esquema creado correctamente.");
+
+    // Migración: agregar columnas faltantes si la tabla ya existía sin ellas
+    console.log("⏳ Verificando migraciones de columnas...");
+    const tableInfo = await db.execute("PRAGMA table_info(jobs)");
+    const columns = tableInfo.rows.map(r => r.name);
+
+    if (!columns.includes("modality")) {
+      await db.execute("ALTER TABLE jobs ADD COLUMN modality TEXT NOT NULL DEFAULT 'remoto'");
+      console.log("  ➕ Columna 'modality' agregada.");
+    }
+    if (!columns.includes("technology")) {
+      await db.execute("ALTER TABLE jobs ADD COLUMN technology TEXT NOT NULL DEFAULT '[]'");
+      console.log("  ➕ Columna 'technology' agregada.");
+    }
+    console.log("✅ Migración verificada.");
+
+    // Crear índices después de asegurar que las columnas existan
+    await db.execute("CREATE INDEX IF NOT EXISTS idx_jobs_level ON jobs(level)");
+    await db.execute("CREATE INDEX IF NOT EXISTS idx_jobs_title ON jobs(title)");
+    await db.execute("CREATE INDEX IF NOT EXISTS idx_jobs_modality ON jobs(modality)");
+    console.log("✅ Índices creados/verificados.");
 
     console.log("⏳ Importando datos desde jobs.json...");
     const jsonPath = path.resolve("jobs.json");
